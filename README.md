@@ -7,7 +7,7 @@
 Склонируйте репозиторий:
 ##### `git clone https://github.com/furrrax/loft-taxi.git`
 
-Установите записимиости:
+Установите записимости:
 ##### `npm install`
 
 Старт:
