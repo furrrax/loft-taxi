@@ -1,17 +1,19 @@
 import React from 'react';
 //import './App.css';
-import PageStart from './pages/PageStart';
+import PageLogin from './pages/PageLogin';
+import PageReg from './pages/PageReg';
 import PageInner from './pages/PageInner';
 
 const STARTPAGES = {
-	pagestart: PageStart,
+	pagelogin: PageLogin,
+	pagereg: PageReg,
 	pageinner: PageInner,
 };
 
 class App extends React.Component {
 	constructor() {
 		super();
-		this.state = {page: "pagestart"};
+		this.state = {page: "pagelogin"};
 	}
 
 	setStartPage = (pageName) => {
