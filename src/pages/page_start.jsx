@@ -16,6 +16,7 @@ const StartPage = () => (
 				</div>
 			</div>
 			<LoginForm />
+			<RegForm />
 		</div>
 	</section>
 );

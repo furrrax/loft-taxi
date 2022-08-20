@@ -1,19 +1,14 @@
 import React from "react";
-import Header from "../components/header";
 import InteractiveMap from "../components/map";
 import PopupOrder from "../components/popup/PopupOrder";
-import PopupSuccessOrder from "../components/popup/PopupSuccessOrder";
+import PopupOrderSuccess from "../components/popup/PopupOrderSuccess";
 
 const MapPage = () => (
-    <section className="profile">
-        <h1>Страница с картой</h1>
-        <div className="container">
-            <Header />
+        <div className="map">
             <InteractiveMap />
             <PopupOrder />
-            <PopupSuccessOrder />
+            <PopupOrderSuccess />
         </div>
-    </section>
 );
 
 export default MapPage;

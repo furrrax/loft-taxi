@@ -1,15 +1,14 @@
 import React from "react";
-import Header from "../components/header";
 import InteractiveMap from "../components/map";
+import PopupProfile from "../components/popup/PopupProfile";
+import PopupProfileSuccess from "../components/popup/PopupProfileSuccess";
 
 const ProfilePage = () => (
-    <section className="profile">
-        <h1>Страница Профиль</h1>
-        <div className="container">
-            <Header />
+        <div className="profile">
             <InteractiveMap />
+            <PopupProfile />
+            <PopupProfileSuccess />
         </div>
-    </section>
 );
 
 export default ProfilePage;
