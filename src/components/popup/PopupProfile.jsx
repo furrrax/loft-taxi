@@ -1,5 +1,7 @@
 import React from "react";
 import logo from "../../img/loft-taxi-logo.svg";
+import cardPic1 from "../../img/card-pic1.svg";
+import cardPic2 from "../../img/card-pic2.svg";
 
 const PopupProfile = () => (
     <div className="popup popup__profile">
@@ -50,10 +52,10 @@ const PopupProfile = () => (
                         </div>
                         <div className="card__row">
                             <div className="card__row__img">
-                                <img src="../../img/card-pic1.svg" className="card__row__pic" alt="" />
+                                <img src={cardPic1} className="card__row__pic" alt="" />
                             </div>
                             <div className="card__row__img">
-                            <img src="../../img/card-pic2.svg" className="card__row__pic" alt="" />
+                            <img src={cardPic2} className="card__row__pic" alt="" />
                             </div>
                         </div>
                     </div>

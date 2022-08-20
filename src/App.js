@@ -1,15 +1,33 @@
-import './App.css';
-import StartPage from './pages/page_start';
-import ProfilePage from './pages/page_profile';
-import InnerPage from './pages/page_inner';
-import MapPage from './pages/page_map';
+import React from 'react';
+//import './App.css';
+import PageStart from './pages/PageStart';
+import PageInner from './pages/PageInner';
 
+const STARTPAGES = {
+	pagestart: PageStart,
+	pageinner: PageInner,
+};
 
-function App() {
-  return (
-    <ProfilePage />
-  );
+class App extends React.Component {
+	constructor() {
+		super();
+		this.state = {page: "pagestart"};
+	}
+
+	setStartPage = (pageName) => {
+		this.setState({page: pageName});
+	};
+
+	render() {
+		const {page} = this.state;
+		const CurrentPage = STARTPAGES[page];
+
+		return (
+			<div className='App'>
+				<CurrentPage setStartPage={this.setStartPage}/>
+			</div>
+		);
+	}
 }
 
 export default App;
-

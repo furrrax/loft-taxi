@@ -1,11 +1,12 @@
 import React from "react";
-import InteractiveMap from "../components/map";
+import MapInner from "../components/MapInner";
 import PopupProfile from "../components/popup/PopupProfile";
 import PopupProfileSuccess from "../components/popup/PopupProfileSuccess";
 
 const ProfilePage = () => (
         <div className="profile">
-            <InteractiveMap />
+            <h1>Страница Профиля</h1>
+            <MapInner />
             <PopupProfile />
             <PopupProfileSuccess />
         </div>

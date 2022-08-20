@@ -1,11 +1,12 @@
 import React from "react";
-import InteractiveMap from "../components/map";
+import MapInner from "../components/MapInner";
 import PopupOrder from "../components/popup/PopupOrder";
 import PopupOrderSuccess from "../components/popup/PopupOrderSuccess";
 
 const MapPage = () => (
         <div className="map">
-            <InteractiveMap />
+            <h1>Страница с картой</h1>
+            <MapInner />
             <PopupOrder />
             <PopupOrderSuccess />
         </div>
