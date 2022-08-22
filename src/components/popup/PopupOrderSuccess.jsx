@@ -1,7 +1,7 @@
 import React from "react";
 
-const PopupSuccessOrder = () => (
-    <div className="popup popup__success-order">
+const PopupOrderSuccess = () => (
+    <div className="popup popup__order-success">
         <h3 className="popup__title">Заказ размещен</h3>
         <span className="popup__subtitle">
             Ваше такси уже едет к вам. Прибудет приблизительно через 10 минут.
@@ -10,4 +10,4 @@ const PopupSuccessOrder = () => (
     </div>
 );
 
-export default PopupSuccessOrder;
+export default PopupOrderSuccess;
