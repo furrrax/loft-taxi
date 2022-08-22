@@ -35,8 +35,8 @@ class PageReg extends React.Component {
                                 </div>
                             </div>
                             <button className="enter-form__content__link">Забыли пароль?</button>
-                            <button onClick={() => setStartPage('pageinner')} className="button-submit" type="submit">Зарегистрироваться</button>
-                            <button onClick={() => setStartPage('pagelogin')} className="enter-form__content__link">Уже зарегистрированы? <span className="enter-form__content__link--yellow">Войти</span></button>
+                            <button onClick={() => setStartPage('pageInner')} className="button-submit" type="submit">Зарегистрироваться</button>
+                            <button onClick={() => setStartPage('pageLogin')} className="enter-form__content__link">Уже зарегистрированы? <span className="enter-form__content__link--yellow">Войти</span></button>
                         </form> 
                     </div>
 				</div>

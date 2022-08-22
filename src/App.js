@@ -5,15 +5,15 @@ import PageReg from './pages/PageReg';
 import PageInner from './pages/PageInner';
 
 const STARTPAGES = {
-	pagelogin: PageLogin,
-	pagereg: PageReg,
-	pageinner: PageInner,
+	pageLogin: PageLogin,
+	pageReg: PageReg,
+	pageInner: PageInner,
 };
 
 class App extends React.Component {
-	constructor() {
-		super();
-		this.state = {page: "pagelogin"};
+	constructor(props) {
+		super(props);
+		this.state = {page: "pageLogin"};
 	}
 
 	setStartPage = (pageName) => {

@@ -11,7 +11,10 @@ const PAGES = {
 
 
 class InnerPage extends React.Component {
-    state = { currentPage: "map" };
+    constructor(props) {
+        super(props);
+        this.state = { currentPage: "map" };
+    }
 
     navigateTo = (page) => {
         this.setState({ currentPage: page });
@@ -37,7 +40,7 @@ class InnerPage extends React.Component {
                                     <button onClick={() => {this.navigateTo("profile");}} className="header__nav__item__link">Профиль</button>
                                 </li>
                                 <li className="header__nav__item header__nav__item">
-                                    <button onClick={() => setStartPage('pagelogin')} className="header__nav__item__link">Выход</button>
+                                    <button onClick={() => setStartPage('pageLogin')} className="header__nav__item__link">Выход</button>
                                 </li>
                             </ul>
                         </nav>
