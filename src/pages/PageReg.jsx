@@ -4,7 +4,7 @@ import logo from '../img/loft-taxi-logo.svg';
 class PageReg extends React.Component {
 
 	render() {
-        const {setStartPage} = this.props;
+        const {setPage} = this.props;
 
 		return (
 			<section className="main">
@@ -35,8 +35,8 @@ class PageReg extends React.Component {
                                 </div>
                             </div>
                             <button className="enter-form__content__link">Забыли пароль?</button>
-                            <button onClick={() => setStartPage('pageInner')} className="button-submit" type="submit">Зарегистрироваться</button>
-                            <button onClick={() => setStartPage('pageLogin')} className="enter-form__content__link">Уже зарегистрированы? <span className="enter-form__content__link--yellow">Войти</span></button>
+                            <button onClick={() => setPage('pageMap')} className="button-submit" type="submit">Зарегистрироваться</button>
+                            <button onClick={() => setPage('pageLogin')} className="enter-form__content__link">Уже зарегистрированы? <span className="enter-form__content__link--yellow">Войти</span></button>
                         </form> 
                     </div>
 				</div>

@@ -1,13 +1,15 @@
 import React from 'react';
-//import './App.css';
 import PageLogin from './pages/PageLogin';
 import PageReg from './pages/PageReg';
-import PageInner from './pages/PageInner';
+import PageMap from './pages/PageMap';
+import PageProfile from './pages/PageProfile';
 
-const STARTPAGES = {
+const PAGES = {
 	pageLogin: PageLogin,
 	pageReg: PageReg,
-	pageInner: PageInner,
+	pageMap: PageMap,
+	pageProfile: PageProfile,
+	//pageInner: PageInner,
 };
 
 class App extends React.Component {
@@ -16,17 +18,17 @@ class App extends React.Component {
 		this.state = {page: "pageLogin"};
 	}
 
-	setStartPage = (pageName) => {
+	setPage = (pageName) => {
 		this.setState({page: pageName});
 	};
 
 	render() {
 		const {page} = this.state;
-		const CurrentPage = STARTPAGES[page];
+		const CurrentPage = PAGES[page];
 
 		return (
 			<div className='App'>
-				<CurrentPage setStartPage={this.setStartPage}/>
+				<CurrentPage setPage={this.setPage}/>
 			</div>
 		);
 	}

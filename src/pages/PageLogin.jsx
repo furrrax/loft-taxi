@@ -4,7 +4,7 @@ import logo from '../img/loft-taxi-logo.svg';
 class PageLogin extends React.Component {
 
 	render() {
-        const {setStartPage} = this.props;
+        const {setPage} = this.props;
 
 		return (
 			<section className="main">
@@ -31,8 +31,8 @@ class PageLogin extends React.Component {
                                 </div>
                             </div>
                             <button className="enter-form__content__link">Забыли пароль?</button>
-                            <button onClick={() => setStartPage('pageInner')} className="button-submit" type="submit">Войти</button>
-                            <button onClick={() => setStartPage('pageReg')} className="enter-form__content__link">Новый пользователь? <span className="enter-form__content__link--yellow">Регистрация</span></button>
+                            <button onClick={() => setPage('pageMap')} className="button-submit" type="submit">Войти</button>
+                            <button onClick={() => setPage('pageReg')} className="enter-form__content__link">Новый пользователь? <span className="enter-form__content__link--yellow">Регистрация</span></button>
                         </form>
                     </div>
 				</div>
