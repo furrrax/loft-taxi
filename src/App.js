@@ -9,7 +9,6 @@ const PAGES = {
 	pageReg: PageReg,
 	pageMap: PageMap,
 	pageProfile: PageProfile,
-	//pageInner: PageInner,
 };
 
 class App extends React.Component {
