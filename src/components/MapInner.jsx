@@ -4,13 +4,16 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 class InteractiveMap extends React.Component {
 
+    map = null;
     mapContainer = React.createRef();
 
     componentDidMount() {
         this.map = new mapboxgl.Map({
             container: this.mapContainer.current,
             accessToken: 'pk.eyJ1IjoiZnVycnJheCIsImEiOiJjbDc3bGRodW8wMHl0M3BtYzhzMjE2aml2In0.qafylIxCw40kE-UEegUuIg',
-            style: 'mapbox://styles/mapbox/streets-v9'
+            style: 'mapbox://styles/mapbox/streets-v9',
+            center: [30.3056504, 59.9429126],
+            zoom: 10,
         });
     }
 
@@ -20,12 +23,13 @@ class InteractiveMap extends React.Component {
 
     render() {
         const style = {
+            //position: 'absolute',
             height: '500px',
             width: '100%'
         };
         return(
-            <div className="map">
-                <div style={style} ref={this.mapContainer} />;
+            <div className="map-wrapper">
+                <div data-testid="map" className="map" style={style} ref={this.mapContainer} />
             </div>
         )
     }
