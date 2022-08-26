@@ -3,8 +3,15 @@ import logo from '../img/loft-taxi-logo.svg';
 import MapInner from "../components/MapInner";
 import PopupOrder from "../components/popup/PopupOrder";
 import PopupOrderSuccess from "../components/popup/PopupOrderSuccess";
+import PropTypes from "prop-types";
 
 class MapPage extends React.Component {
+
+    static propTypes = {
+        pageMap: PropTypes.string,
+        pageProfile: PropTypes.string,
+        pageLogin: PropTypes.string
+    }
     
     render() {
         const {setPage} = this.props;

@@ -1,7 +1,13 @@
 import React from "react";
 import logo from '../img/loft-taxi-logo.svg';
+import PropTypes from "prop-types";
 
 class PageReg extends React.Component {
+
+    static propTypes = {
+        pageMap: PropTypes.string,
+        pageLogin: PropTypes.string,
+    }
 
 	render() {
         const {setPage} = this.props;

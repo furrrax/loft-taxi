@@ -3,8 +3,15 @@ import logo from '../img/loft-taxi-logo.svg';
 import MapInner from "../components/MapInner";
 import PopupProfile from "../components/popup/PopupProfile";
 import PopupProfileSuccess from "../components/popup/PopupProfileSuccess";
+import PropTypes from "prop-types";
 
 class ProfilePage extends React.Component {
+
+    static propTypes = {
+        pageMap: PropTypes.string,
+        pageProfile: PropTypes.string,
+        pageLogin: PropTypes.string
+    }
 
     render() {
         const {setPage} = this.props;
@@ -33,7 +40,9 @@ class ProfilePage extends React.Component {
                     </header>
                     <div className="profile">
                         <h1>Страница Профиля</h1>
-                        <MapInner />
+                        <div class="profile__map-wrapper">
+                            <MapInner />
+                        </div>
                         <PopupProfile />
                         <PopupProfileSuccess />
                     </div>
