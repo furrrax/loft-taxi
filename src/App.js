@@ -3,6 +3,7 @@ import PageLogin from './pages/PageLogin';
 import PageReg from './pages/PageReg';
 import PageMap from './pages/PageMap';
 import PageProfile from './pages/PageProfile';
+import { AuthProvider } from './AuthContext';
 
 const PAGES = {
 	pageLogin: PageLogin,
@@ -26,9 +27,11 @@ class App extends React.Component {
 		const CurrentPage = PAGES[page];
 
 		return (
-			<div className='App'>
-				<CurrentPage setPage={this.setPage}/>
-			</div>
+			<AuthProvider>
+				<div className='App'>
+					<CurrentPage setPage={this.setPage}/>
+				</div>
+			</AuthProvider>
 		);
 	}
 }

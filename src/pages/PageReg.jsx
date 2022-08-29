@@ -16,7 +16,7 @@ class PageReg extends React.Component {
 			<section className="main">
 				<h1>Страница регистрации</h1>
 				<div className="container">
-					<img src className="main__bg" alt="фон"/>
+					<img className="main__bg" alt="фон"/>
 					<div className="main__sidebar">
 						<div className="main__sidebar__logo">
 							<img src={logo} className="main__sidebar__logo__pic" alt="logo" />

@@ -14,7 +14,7 @@ describe("App", () => {
         expect(container.innerHTML).toMatch("Страница входа");
     });
 
-    /* describe("when clicked on nav buttons", () => {
+    describe("when clicked on nav buttons", () => {
         it("opens the corresponding page", () => {
             const { getByText, container } = render(<App />);
 
@@ -23,5 +23,5 @@ describe("App", () => {
             fireEvent.click(getByText('Новый пользователь?'));
             expect(container.innerHTML).toMatch("Страница регистрации");
         })
-    }) */
+    })
 })
