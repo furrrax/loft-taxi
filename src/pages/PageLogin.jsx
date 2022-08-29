@@ -16,7 +16,7 @@ class PageLogin extends React.Component {
 			<section className="main">
 				<h1>Страница входа</h1>
 				<div className="container">
-					<img src className="main__bg" alt="фон"/>
+					<img className="main__bg" alt="фон"/>
 					<div className="main__sidebar">
 						<div className="main__sidebar__logo">
 							<img src={logo} className="main__sidebar__logo__pic" alt="logo" />
@@ -28,12 +28,12 @@ class PageLogin extends React.Component {
                         <form className="enter-form__content">
                             <div className="enter-form__content__inputs">
                                 <div className="input__wrap">
-                                    <div className="input__title">Email</div>
-                                    <input type="email" className="input__field" placeholder="mail@mail.ru"></input>
+                                    <label htmlFor="email" className="input__title">Email</label>
+                                    <input id="email" type="email" name="email" className="input__field" placeholder="mail@mail.ru"></input>
                                 </div>
                                 <div className="input__wrap">
-                                    <div className="input__title">Email</div>
-                                    <input type="password" className="input__field" placeholder="*************"></input>
+                                    <label htmlFor="password" className="input__title">Password</label>
+                                    <input id="password" type="password" name="password" className="input__field" placeholder="*************"></input>
                                 </div>
                             </div>
                             <button className="enter-form__content__link">Забыли пароль?</button>
