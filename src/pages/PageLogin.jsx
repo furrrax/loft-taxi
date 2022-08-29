@@ -1,14 +1,10 @@
 import React from "react";
 import logo from '../img/loft-taxi-logo.svg';
 import PropTypes from "prop-types";
-import { AuthContext } from "../AuthContext";
 
 function PageLogin(props) {
 
     const {setPage} = props;
-    const {logIn} = useContext(AuthContext);
-
-
 
     return (
         <section className="main">
@@ -23,7 +19,7 @@ function PageLogin(props) {
                 </div>
                 <div className="enter-form">
                     <h3 className="enter-form__title">Войти</h3>
-                    <form className="enter-form__content" onSubmit={logIn(email, password)}>
+                    <form className="enter-form__content">
                         <div className="enter-form__content__inputs">
                             <div className="input__wrap">
                                 <label htmlFor="email" className="input__title">Email</label>
