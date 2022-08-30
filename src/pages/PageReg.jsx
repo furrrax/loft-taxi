@@ -22,19 +22,19 @@ function PageReg (props) {
                                 <div className="enter-form__content__inputs">
                                     <div className="input__wrap">
                                         <div className="input__title">Email</div>
-                                        <input type="email" className="input__field" placeholder="mail@mail.ru"></input>
+                                        <input type="email" className="input__field" placeholder="mail@mail.ru" required></input>
                                     </div>
                                     <div className="input__wrap">
                                         <div className="input__title">Как вас зовут?</div>
-                                        <input type="text" className="input__field" placeholder="Петр Александрович"></input>
+                                        <input type="text" className="input__field" placeholder="Петр Александрович" required></input>
                                     </div>
                                     <div className="input__wrap">
                                         <div className="input__title">Придумайте пароль*</div>
-                                        <input type="password" className="input__field" placeholder="*************"></input>
+                                        <input type="password" className="input__field" placeholder="*************" required></input>
                                     </div>
                                 </div>
                                 <button className="enter-form__content__link">Забыли пароль?</button>
-                                <button onClick={() => setPage('pageMap')} className="button-submit" type="submit">Зарегистрироваться</button>
+                                <button className="button-submit" type="submit">Зарегистрироваться</button>
                                 <div className="enter-form__content__text">
                                     Уже зарегистрированы?
                                     &nbsp;
