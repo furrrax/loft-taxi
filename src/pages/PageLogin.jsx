@@ -29,13 +29,10 @@ function PageLogin(props) {
     return (
         <>
             <section className="main">
-                <h1>Страница входа</h1>
                 <div className="container">
-                    <img className="main__bg" alt="фон"/>
                     <div className="main__sidebar">
                         <div className="main__sidebar__logo">
                             <img src={logo} className="main__sidebar__logo__pic" alt="logo" />
-                            <span className="main__sidebar__logo__text">loft<span className="main__sidebar__logo__text--yellow">taxi</span></span>
                         </div>
                     </div>
                     {isLoggedIn ? (
@@ -46,23 +43,31 @@ function PageLogin(props) {
                             </button>
                         </p>
                     ) : (
-                        <div className="enter-form">
-                            <h3 className="enter-form__title">Войти</h3>
-                            <form className="enter-form__content" onSubmit={submitHandle}>
-                                <div className="enter-form__content__inputs">
-                                    <div className="input__wrap">
-                                        <label htmlFor="email" className="input__title">Email</label>
-                                        <input value={email} onChange={emailHandleChange} id="email" type="email" name="email" className="input__field" placeholder="mail@mail.ru"></input>
-                                    </div>
-                                    <div className="input__wrap">
-                                        <label htmlFor="password" className="input__title">Password</label>
-                                        <input value={password} onChange={passwordHandleChange} id="password" type="password" name="password" className="input__field" placeholder="*************"></input>
-                                    </div>
+                        <div className="main__content">
+                            <div className="enter-form">
+                                <div className="enter-form__container">
+                                    <h3 className="enter-form__title">Войти</h3>
+                                    <form className="enter-form__content" onSubmit={submitHandle}>
+                                        <div className="enter-form__content__inputs">
+                                            <div className="input__wrap">
+                                                <label htmlFor="email" className="input__title">Email</label>
+                                                <input value={email} onChange={emailHandleChange} id="email" type="email" name="email" className="input__field" placeholder="mail@mail.ru"></input>
+                                            </div>
+                                            <div className="input__wrap">
+                                                <label htmlFor="password" className="input__title">Пароль</label>
+                                                <input value={password} onChange={passwordHandleChange} id="password" type="password" name="password" className="input__field" placeholder="*************"></input>
+                                            </div>
+                                        </div>
+                                        <button className="enter-form__content__link">Забыли пароль?</button>
+                                        <button /* onClick={() => setPage('pageMap')} */ className="button-submit" type="submit">Войти</button>
+                                        <div className="enter-form__content__text">
+                                            Новый пользователь?
+                                            &nbsp;
+                                            <button className="enter-form__content__text__link" onClick={() => setPage('pageReg')}>Регистрация</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <button className="enter-form__content__link">Забыли пароль?</button>
-                                <button /* onClick={() => setPage('pageMap')} */ className="button-submit" type="submit">Войти</button>
-                                <button onClick={() => setPage('pageReg')} className="enter-form__content__link">Новый пользователь? <span className="enter-form__content__link--yellow">Регистрация</span></button>
-                            </form>
+                            </div>
                         </div>
                     )}
                 </div>
