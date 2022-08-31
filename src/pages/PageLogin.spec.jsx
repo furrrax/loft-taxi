@@ -20,14 +20,14 @@ describe('PageLogin', () => {
     
 
     it("Form submitted, and entered", () => {
-        const {FormWithProvider} = () => <AuthProvider isLoggedIn={true}><App><PageLogin /></App></AuthProvider>;
+        const {FormWithProvider} = () => <AuthProvider><App><PageLogin /></App></AuthProvider>;
 
         render(FormWithProvider);
 
         expect(FormWithProvider.find(".enter-form__title").text()).toEqual("Войти");
 
-        //fireEvent.change(screen.getByTestId('email'), { target: { value: 'valid@email.com' } });
-        //fireEvent.change(screen.getByTestId('password'), { target: { value: 'validpassword' } });
+        fireEvent.change(screen.getByTestId('email'), { target: { value: 'valid@email.com' } });
+        fireEvent.change(screen.getByTestId('password'), { target: { value: 'validpassword' } });
 
         fireEvent.click(screen.getAllByTestId('submit'));
 
