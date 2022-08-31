@@ -51,15 +51,15 @@ function PageLogin(props) {
                                         <div className="enter-form__content__inputs">
                                             <div className="input__wrap">
                                                 <label htmlFor="email" className="input__title">Email</label>
-                                                <input value={email} onChange={emailHandleChange} id="email" type="email" name="email" className="input__field" placeholder="mail@mail.ru" required></input>
+                                                <input value={email} onChange={emailHandleChange} id="email" type="email" name="email" className="input__field" placeholder="mail@mail.ru" data-testid="email" required></input>
                                             </div>
                                             <div className="input__wrap">
                                                 <label htmlFor="password" className="input__title">Пароль</label>
-                                                <input value={password} onChange={passwordHandleChange} id="password" type="password" name="password" className="input__field" placeholder="*************" required></input>
+                                                <input value={password} onChange={passwordHandleChange} id="password" type="password" name="password" className="input__field" placeholder="*************" data-testid="password" required></input>
                                             </div>
                                         </div>
                                         <button className="enter-form__content__link">Забыли пароль?</button>
-                                        <button /* onClick={() => setPage('pageMap')} */ className="button-submit" id="button-submit" type="submit">Войти</button>
+                                        <button /* onClick={() => setPage('pageMap')} */ className="button-submit" id="button-submit" data-testid="submit" type="submit">Войти</button>
                                         <div className="enter-form__content__text">
                                             Новый пользователь?
                                             &nbsp;

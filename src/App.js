@@ -22,14 +22,6 @@ class App extends React.Component {
 		this.setState({page: pageName});
 	};
 
-	/* setPage = (pageName) => {
-		if (this.props.isLoggedIn) {
-			this.setState({page: pageName});
-		} else {
-			this.setState({page: "pageLogin"});
-		}
-	}; */
-
 	render() {
 		const {page} = this.state;
 		const CurrentPage = PAGES[page];
