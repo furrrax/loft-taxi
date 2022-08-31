@@ -59,7 +59,7 @@ function PageLogin(props) {
                                             </div>
                                         </div>
                                         <button className="enter-form__content__link">Забыли пароль?</button>
-                                        <button /* onClick={() => setPage('pageMap')} */ className="button-submit" type="submit">Войти</button>
+                                        <button /* onClick={() => setPage('pageMap')} */ className="button-submit" id="button-submit" type="submit">Войти</button>
                                         <div className="enter-form__content__text">
                                             Новый пользователь?
                                             &nbsp;

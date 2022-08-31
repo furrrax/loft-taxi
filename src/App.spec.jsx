@@ -1,27 +1,19 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import App from "./App";
-
-jest.mock('./pages/PageLogin', () => ({PageLogin: () => <h1>Страница входа</h1>}));
-jest.mock('./pages/PageReg', () => ({PageReg: () => <h1>Страница регистрации</h1>}));
-jest.mock('./pages/PageMap', () => ({PageMap: () => <h1>Страница с картой</h1>}));
-jest.mock('./pages/PageProfile', () => ({PageProfile: () => <h1>Страница Профиля</h1>}));
+import PageLogin from "./pages/PageLogin";
+import {shallow} from "enzyme";
 
 describe("App", () => {
-    it("Page renders correctly", () => {
+    it("Container renders correctly", () => {
         const { container } = render(App);
         
-        expect(container.innerHTML).toMatch("Страница входа");
+        expect(container).toBeTruthy();
     });
 
-    describe("when clicked on nav buttons", () => {
-        it("opens the corresponding page", () => {
-            const { getByText, container } = render(<App />);
+    it("Login Form renders correctly", () => {
+        const wrapper = shallow(<App />);
+        expect(wrapper.find(<PageLogin />)).toBeTruthy();
+    });
 
-            fireEvent.click(getByText('Войти'));
-            expect(container.innerHTML).toMatch("Страница с картой");
-            fireEvent.click(getByText('Новый пользователь?'));
-            expect(container.innerHTML).toMatch("Страница регистрации");
-        })
-    })
-})
+});
