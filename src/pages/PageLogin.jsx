@@ -26,6 +26,11 @@ function PageLogin(props) {
         logIn(email, password);
     };
 
+    /* const loggingIn = () => {
+        logIn();
+        setPage('pageMap');
+    }; */
+
     return (
         <>
             <section className="main">

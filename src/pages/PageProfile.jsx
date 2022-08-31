@@ -9,48 +9,43 @@ import { AuthContext } from "../AuthContext";
 function PageProfile (props) {
 
     const {setPage} = props;
-    const {logOut, isLoggedIn} = useContext(AuthContext);
+    const {logOut} = useContext(AuthContext);
+    const logOff = () => {
+        logOut();
+        setPage('pageLogin');
+    };
 
     return (
         <section className="inner">
-            {!isLoggedIn ? (
-                        <p>
-                            Вы вышли{" "}
-                            <button onClick={() => setPage('pageLogin')}>
-                                Вернуться на главную
-                            </button>
-                        </p>
-                ) : (
-                    <div className="container">
-                        <header className="header">
-                            <div className="header__logo">
-                                <img src={logo} className="header__logo__pic" alt="logo" />
-                                <div className="header__logo__text">loft<span className="header__logo__text--yellow">taxi</span></div>
-                            </div>
-                            <nav className="header__nav">
-                                <ul className="header__nav__list">
-                                    <li className="header__nav__item header__nav__item">
-                                        <button onClick={() => setPage('pageMap')} className="header__nav__item__link">Карта</button>
-                                    </li>
-                                    <li className="header__nav__item header__nav__item">
-                                        <button onClick={() => setPage('pageProfile')} className="header__nav__item__link">Профиль</button>
-                                    </li>
-                                    <li className="header__nav__item header__nav__item">
-                                        <button onClick={logOut} className="header__nav__item__link">Выход</button>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </header>
-                        <div className="profile">
-                            <h1>Страница Профиля</h1>
-                            <div class="profile__map-wrapper">
-                                <MapInner />
-                            </div>
-                            <PopupProfile />
-                            <PopupProfileSuccess />
-                        </div>
+            <div className="container">
+                <header className="header">
+                    <div className="header__logo">
+                        <img src={logo} className="header__logo__pic" alt="logo" />
+                        <div className="header__logo__text">loft<span className="header__logo__text--yellow">taxi</span></div>
                     </div>
-                )}
+                    <nav className="header__nav">
+                        <ul className="header__nav__list">
+                            <li className="header__nav__item header__nav__item">
+                                <button onClick={() => setPage('pageMap')} className="header__nav__item__link">Карта</button>
+                            </li>
+                            <li className="header__nav__item header__nav__item">
+                                <button onClick={() => setPage('pageProfile')} className="header__nav__item__link">Профиль</button>
+                            </li>
+                            <li className="header__nav__item header__nav__item">
+                                <button onClick={logOff} className="header__nav__item__link">Выход</button>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <div className="profile">
+                    <h1>Страница Профиля</h1>
+                    <div class="profile__map-wrapper">
+                        <MapInner />
+                    </div>
+                    <PopupProfile />
+                    <PopupProfileSuccess />
+                </div>
+            </div>
         </section>
     );
 }
