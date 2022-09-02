@@ -1,5 +1,5 @@
 import {React, useContext} from "react";
-import logo from '../img/loft-taxi-logo.svg';
+import logo from '../img/loft-taxi-logo-inner.svg';
 import MapInner from "../components/MapInner";
 import PopupOrder from "../components/popup/PopupOrder";
 import PopupOrderSuccess from "../components/popup/PopupOrderSuccess";
@@ -22,25 +22,23 @@ function PageMap (props) {
                 <header className="header">
                     <div className="header__logo">
                         <img src={logo} className="header__logo__pic" alt="logo" />
-                        <div className="header__logo__text">loft<span className="header__logo__text--yellow">taxi</span></div>
                     </div>
                     <nav className="header__nav">
                         <ul className="header__nav__list">
-                            <li className="header__nav__item header__nav__item">
+                            <li className="header__nav__item">
                                 <button onClick={() => setPage('pageMap')} className="header__nav__item__link">Карта</button>
                             </li>
-                            <li className="header__nav__item header__nav__item">
+                            <li className="header__nav__item">
                                 <button onClick={() => setPage('pageProfile')} className="header__nav__item__link">Профиль</button>
                             </li>
-                            <li className="header__nav__item header__nav__item">
+                            <li className="header__nav__item">
                                 {/* <button onClick={() => setPage('pageLogin')} className="header__nav__item__link">Выход</button> */}
                                 <button onClick={logOff} className="header__nav__item__link">Выход</button>
                             </li>
                         </ul>
                     </nav>
                 </header>
-                <div className="map">
-                    <h1>Страница с картой</h1>
+                <div className="content">
                     <MapInner />
                     <PopupOrder />
                     <PopupOrderSuccess />

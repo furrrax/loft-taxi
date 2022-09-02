@@ -1,5 +1,5 @@
 import {React, useContext} from "react";
-import logo from '../img/loft-taxi-logo.svg';
+import logo from '../img/loft-taxi-logo-inner.svg';
 import MapInner from "../components/MapInner";
 import PopupProfile from "../components/popup/PopupProfile";
 import PopupProfileSuccess from "../components/popup/PopupProfileSuccess";
@@ -16,12 +16,11 @@ function PageProfile (props) {
     };
 
     return (
-        <section className="inner">
+        <section className="inner__profile">
             <div className="container">
                 <header className="header">
                     <div className="header__logo">
                         <img src={logo} className="header__logo__pic" alt="logo" />
-                        <div className="header__logo__text">loft<span className="header__logo__text--yellow">taxi</span></div>
                     </div>
                     <nav className="header__nav">
                         <ul className="header__nav__list">
@@ -37,11 +36,8 @@ function PageProfile (props) {
                         </ul>
                     </nav>
                 </header>
-                <div className="profile">
-                    <h1>Страница Профиля</h1>
-                    <div class="profile__map-wrapper">
-                        <MapInner />
-                    </div>
+                <div className="content">
+                    <MapInner />
                     <PopupProfile />
                     <PopupProfileSuccess />
                 </div>
