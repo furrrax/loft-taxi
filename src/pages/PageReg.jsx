@@ -2,6 +2,8 @@ import React from "react";
 import logo from '../img/loft-taxi-logo.svg';
 import PropTypes from "prop-types";
 
+import { Link } from "react-router-dom"; 
+
 function PageReg (props) {
 
     const {setPage} = props;
@@ -38,7 +40,9 @@ function PageReg (props) {
                                 <div className="enter-form__content__text">
                                     Уже зарегистрированы?
                                     &nbsp;
-                                    <button className="enter-form__content__text__link" onClick={() => setPage('pageLogin')}>Войти</button>
+                                    <Link to="/">
+                                        <button className="enter-form__content__text__link" /* onClick={() => setPage('pageLogin')} */>Войти</button>
+                                    </Link>
                                 </div>
                             </form> 
                         </div>

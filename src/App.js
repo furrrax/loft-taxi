@@ -9,12 +9,14 @@ import PageMap from './pages/PageMap';
 import PageProfile from './pages/PageProfile';
 import { AuthProvider } from './AuthContext';
 
-const PAGES = {
+import { Route, Routes} from "react-router-dom";
+
+/* const PAGES = {
 	pageLogin: PageLogin,
 	pageReg: PageReg,
 	pageMap: PageMap,
 	pageProfile: PageProfile,
-};
+}; */
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -22,7 +24,7 @@ const App = () => {
 
 	//console.log("page" , page);
 
-	const CurrentPage = PAGES[page];
+	//const CurrentPage = PAGES[page];
 
 	const pageChange = (pageName) => {
 		dispatch(setPage(pageName));
@@ -31,7 +33,14 @@ const App = () => {
 	return (
 		<AuthProvider>
 			<div className='App'>
-				<CurrentPage setPage={pageChange} />
+				{/* <CurrentPage setPage={pageChange} /> */}
+				<Routes>
+					<Route path="/" element={<PageLogin />} exact></Route>
+					<Route path="/reg" element={<PageReg />}></Route>
+					<Route path="/map" element={<PageMap />}></Route>
+					<Route path="/profile" element={<PageProfile />}></Route>
+					<Route path="*" element={<PageLogin />}></Route>
+				</Routes>
 			</div>
 		</AuthProvider>
 	);
