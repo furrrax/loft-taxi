@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import {React} from "react";
 import cross from "../../img/icon-cross.svg";
 import arrow from "../../img/icon-arrow.svg";
 import picCar1 from "../../img/option-car01.png";
