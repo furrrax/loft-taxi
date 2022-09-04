@@ -4,9 +4,7 @@ import PropTypes from "prop-types";
 
 import { Link } from "react-router-dom"; 
 
-function PageReg (props) {
-
-    const {setPage} = props;
+function PageReg () {
 
     return (
         <section className="main">
@@ -41,7 +39,7 @@ function PageReg (props) {
                                     Уже зарегистрированы?
                                     &nbsp;
                                     <Link to="/">
-                                        <button className="enter-form__content__text__link" /* onClick={() => setPage('pageLogin')} */>Войти</button>
+                                        <button className="enter-form__content__text__link">Войти</button>
                                     </Link>
                                 </div>
                             </form> 

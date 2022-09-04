@@ -5,9 +5,8 @@ import { AuthContext } from "../AuthContext";
 
 import { Link, Navigate } from "react-router-dom";
 
-function PageLogin(props) {
+function PageLogin() {
 
-    //const {setPage} = props;
     const {logIn, isLoggedIn} = useContext(AuthContext);
 
     const [email, setEmail] = useState('');
@@ -15,23 +14,16 @@ function PageLogin(props) {
 
     const emailHandleChange = (event) => {
         setEmail(event.target.value);
-        //console.log(event.target.value);
     };
 
     const passwordHandleChange = (event) => {
         setPassword(event.target.value);
-        //console.log(event.target.value);
     };
 
     const submitHandle = (event) => {
         event.preventDefault();
         logIn(email, password);
     };
-
-    /* const loggingIn = () => {
-        logIn();
-        setPage('pageMap');
-    }; */
 
     return (
         <>  
@@ -61,12 +53,12 @@ function PageLogin(props) {
                                                 </div>
                                             </div>
                                             <button className="enter-form__content__link">Забыли пароль?</button>
-                                            <button /* onClick={() => setPage('pageMap')} */ className="button-submit" id="button-submit" data-testid="submit" type="submit">Войти</button>
+                                            <button className="button-submit" id="button-submit" data-testid="submit" type="submit">Войти</button>
                                             <div className="enter-form__content__text">
                                                 Новый пользователь?
                                                 &nbsp;
                                                 <Link to="/reg">
-                                                    <button className="enter-form__content__text__link" /* onClick={() => setPage('pageReg')} */>Регистрация</button>
+                                                    <button className="enter-form__content__text__link">Регистрация</button>
                                                 </Link>
                                             </div>
                                         </form>
