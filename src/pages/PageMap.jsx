@@ -6,7 +6,7 @@ import PopupOrderSuccess from "../components/popup/PopupOrderSuccess";
 import PropTypes from "prop-types";
 import { AuthContext } from "../AuthContext";
 
-import { Link, Navigate } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 function PageMap () {
 
@@ -45,13 +45,16 @@ function PageMap () {
                         </header>
                         <div className="content">
                             <MapInner />
-                            <PopupOrder />
-                            <PopupOrderSuccess />
+                            <Routes>
+                                <Route path="/order" element={<PopupOrder />} exact></Route>
+                                <Route path="/order-success" element={<PopupOrderSuccess />}></Route>
+                                <Route path="*" element={<PopupOrder />}></Route>
+                            </Routes>
                         </div>
                     </div>
                 </section>
             ) : (
-                <Navigate to="/" />
+                <Navigate to="/login" />
             )}
         </>
     );

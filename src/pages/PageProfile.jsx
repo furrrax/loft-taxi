@@ -6,7 +6,7 @@ import PopupProfileSuccess from "../components/popup/PopupProfileSuccess";
 import PropTypes from "prop-types";
 import { AuthContext } from "../AuthContext";
 
-import { Link, Navigate } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 function PageProfile () {
 
@@ -44,13 +44,16 @@ function PageProfile () {
                         </header>
                         <div className="content">
                             <MapInner />
-                            <PopupProfile />
-                            <PopupProfileSuccess />
+                            <Routes>
+                                <Route path="/profile" element={<PopupProfile />} exact></Route>
+                                <Route path="/profile-success" element={<PopupProfileSuccess />}></Route>
+                                <Route path="*" element={<PopupProfile />}></Route>
+                            </Routes>
                         </div>
                     </div>
                 </section>
             ) : (
-                <Navigate to="/" />
+                <Navigate to="/login" />
             )}
         </>
     );
