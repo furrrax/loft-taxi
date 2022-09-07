@@ -8,12 +8,13 @@ const initialState = {
 export const userReducer = createReducer(initialState, 
     {
         [logIn.type]: (state) => {
-            if (authenticate("valid@email.com", "validpassword"))
+            if (authenticate("valid@email.com", "validpassword")) {
                 state.isLoggedIn = true
-            },
+            }
+        },
     
         [logOut.type]: (state) => {
             state.isLoggedIn = false
-            }
+        }
     }
 )
