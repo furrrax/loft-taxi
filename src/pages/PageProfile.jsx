@@ -45,8 +45,8 @@ function PageProfile () {
                         <div className="content">
                             <MapInner />
                             <Routes>
-                                <Route path="/profile" element={<PopupProfile />} exact></Route>
-                                <Route path="/profile-success" element={<PopupProfileSuccess />}></Route>
+                                <Route path="/profile/*" element={<PopupProfile />} exact></Route>
+                                <Route path="/profile-success/*" element={<PopupProfileSuccess />}></Route>
                                 <Route path="*" element={<PopupProfile />}></Route>
                             </Routes>
                         </div>

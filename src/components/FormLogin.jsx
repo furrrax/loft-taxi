@@ -1,12 +1,14 @@
 import {React, useContext, useState} from "react";
 import PropTypes from "prop-types";
 import { AuthContext } from "../AuthContext";
+//import { useDispatch } from "react-redux";
 
 import { Link, Navigate } from "react-router-dom";
 
 function FormLogin() {
 
     const {logIn, isLoggedIn} = useContext(AuthContext);
+    //const dispatch = useDispatch();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

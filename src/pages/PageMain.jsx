@@ -9,7 +9,6 @@ function PageMain() {
 
     return (
         <>  
-            
             <section className="main">
                 <div className="container">
                     <div className="main__sidebar">
@@ -18,11 +17,11 @@ function PageMain() {
                         </div>
                     </div>
                         <div className="main__content">
-                        <Routes>
-                            <Route path="/login" element={<FormLogin />} exact></Route>
-                            <Route path="/reg" element={<FormReg />}></Route>
-                            <Route path="*" element={<FormLogin />}></Route>
-                        </Routes>
+                            <Routes>
+                                <Route path="/login" element={<FormLogin />} exact></Route>
+                                <Route path="/reg" element={<FormReg />}></Route>
+                                <Route path="*" element={<FormLogin />}></Route>
+                            </Routes>
                         </div>
                     </div>
                 </section>

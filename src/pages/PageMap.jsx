@@ -46,8 +46,8 @@ function PageMap () {
                         <div className="content">
                             <MapInner />
                             <Routes>
-                                <Route path="/order" element={<PopupOrder />} exact></Route>
-                                <Route path="/order-success" element={<PopupOrderSuccess />}></Route>
+                                <Route path="/order/*" element={<PopupOrder />} exact></Route>
+                                <Route path="/order-success/*" element={<PopupOrderSuccess />}></Route>
                                 <Route path="*" element={<PopupOrder />}></Route>
                             </Routes>
                         </div>
