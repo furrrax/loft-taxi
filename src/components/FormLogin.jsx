@@ -1,14 +1,19 @@
-import {React, useContext, useState} from "react";
+import {React, useState} from "react";
 import PropTypes from "prop-types";
-import { AuthContext } from "../AuthContext";
+//import { AuthContext } from "../AuthContext";
 //import { useDispatch } from "react-redux";
 
 import { Link, Navigate } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
+import { authenticate } from "../redux/actions/user";
+import { getIsLoggedIn } from "../redux/selectors/auth";
+
 function FormLogin() {
 
-    const {logIn, isLoggedIn} = useContext(AuthContext);
-    //const dispatch = useDispatch();
+    //const {logIn, isLoggedIn} = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const loggedIn = useSelector(getIsLoggedIn);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -23,12 +28,12 @@ function FormLogin() {
 
     const submitHandle = (event) => {
         event.preventDefault();
-        logIn(email, password);
+        dispatch(authenticate(email, password));
     };
 
     return (
         <>  
-            {isLoggedIn ? (
+            {loggedIn ? (
                 <Navigate to="/map" />
             ) : (
                 <div className="enter-form">

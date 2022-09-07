@@ -16,7 +16,7 @@ const App = () => {
 		<Provider store={store}>
 			<div className='App'>
 				<Routes>
-					<Route path="/" element={<PageMain />} exact></Route>
+					<Route path="*" element={<PageMain />} exact></Route>
 					<Route path="/map/*" element={<PageMap />}></Route>
 					<Route path="/profile/*" element={<PageProfile />}></Route>
 					<Route path="*" element={<PageMain />}></Route>
