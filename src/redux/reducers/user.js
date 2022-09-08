@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import {logIn, logOut, authenticate} from '../actions/user';
+import {logIn, logOut} from '../actions/user';
 
 const initialState = {
     isLoggedIn: false
@@ -8,9 +8,8 @@ const initialState = {
 export const userReducer = createReducer(initialState, 
     {
         [logIn.type]: (state) => {
-            if (authenticate("valid@email.com", "validpassword")) {
-                state.isLoggedIn = true
-            }
+            console.log('submit clicked')
+            state.isLoggedIn = true
         },
     
         [logOut.type]: (state) => {

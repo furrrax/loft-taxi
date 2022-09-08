@@ -1,12 +1,11 @@
 import {React, useState} from "react";
 import PropTypes from "prop-types";
 //import { AuthContext } from "../AuthContext";
-//import { useDispatch } from "react-redux";
 
 import { Link, Navigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { authenticate } from "../redux/actions/user";
+import { authenticate, logIn } from "../redux/actions/user";
 import { getIsLoggedIn } from "../redux/selectors/auth";
 
 function FormLogin() {
@@ -28,6 +27,7 @@ function FormLogin() {
 
     const submitHandle = (event) => {
         event.preventDefault();
+        //dispatch(logIn(email, password));
         dispatch(authenticate(email, password));
     };
 

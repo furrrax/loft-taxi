@@ -4,13 +4,16 @@ import MapInner from "../components/MapInner";
 import PopupOrder from "../components/popup/PopupOrder";
 import PopupOrderSuccess from "../components/popup/PopupOrderSuccess";
 import PropTypes from "prop-types";
-import { AuthContext } from "../AuthContext";
+//import { AuthContext } from "../AuthContext";
 
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 
+import { getIsLoggedIn } from "../redux/selectors/auth";
+
 function PageMap () {
 
-    const {logOut, isLoggedIn} = useContext(AuthContext);
+    //const {logOut, isLoggedIn} = useContext(AuthContext);
+    const loggedIn = useSelector(getIsLoggedIn);
 
     const LogOff = () => {
         logOut();
@@ -18,7 +21,7 @@ function PageMap () {
 
     return (
         <>
-            {isLoggedIn ? (
+            {loggedIn ? (
                 <section className="inner__map">
                     <div className="container">
                         <header className="header">
