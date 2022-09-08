@@ -9,15 +9,16 @@ import PropTypes from "prop-types";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 import { getIsLoggedIn } from "../redux/selectors/auth";
+import { useSelector } from "react-redux";
 
 function PageMap () {
 
     //const {logOut, isLoggedIn} = useContext(AuthContext);
     const loggedIn = useSelector(getIsLoggedIn);
 
-    const LogOff = () => {
-        logOut();
-    };
+    // const LogOff = () => {
+    //     logOut();
+    // };
 
     return (
         <>
@@ -41,7 +42,7 @@ function PageMap () {
                                         </Link>
                                     </li>
                                     <li className="header__nav__item">
-                                        <button onClick={LogOff} className="header__nav__item__link">Выход</button>
+                                        <button /* onClick={LogOff} */ className="header__nav__item__link">Выход</button>
                                     </li>
                                 </ul>
                             </nav>
