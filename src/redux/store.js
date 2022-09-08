@@ -4,4 +4,6 @@ import { userReducer } from "./reducers/user";
 import { authMiddleware } from "./middlwares/auth";
 
 const rootReducer = combineReducers({user: userReducer});
-export const store = configureStore(rootReducer, applyMiddleware(authMiddleware));
+const middleware = applyMiddleware(authMiddleware);
+//export const store = configureStore({reducer: rootReducer});
+export const store = configureStore({reducer: rootReducer}, middleware);
