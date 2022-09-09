@@ -1,23 +1,28 @@
-import {React, useContext} from "react";
+import {React} from "react";
 import logo from '../img/loft-taxi-logo-inner.svg';
 import MapInner from "../components/MapInner";
 import PopupProfile from "../components/popup/PopupProfile";
 import PopupProfileSuccess from "../components/popup/PopupProfileSuccess";
 import PropTypes from "prop-types";
-import { AuthContext } from "../AuthContext";
 
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../redux/actions/user";
+import { getIsLoggedIn } from "../redux/selectors/auth";
+
 function PageProfile () {
 
-    const {logOut ,isLoggedIn} = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const loggedIn = useSelector(getIsLoggedIn);
+
     const logOff = () => {
-        logOut();
+        dispatch(logOut());
     };
 
     return (
         <>
-            {isLoggedIn ? (
+            {loggedIn ? (
                 <section className="inner__profile">
                     <div className="container">
                         <header className="header">

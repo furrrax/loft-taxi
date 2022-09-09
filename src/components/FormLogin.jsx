@@ -1,6 +1,5 @@
 import {React, useState} from "react";
 import PropTypes from "prop-types";
-//import { AuthContext } from "../AuthContext";
 
 import { Link, Navigate } from "react-router-dom";
 
@@ -10,7 +9,6 @@ import { getIsLoggedIn } from "../redux/selectors/auth";
 
 function FormLogin() {
 
-    //const {logIn, isLoggedIn} = useContext(AuthContext);
     const dispatch = useDispatch();
     const loggedIn = useSelector(getIsLoggedIn);
 
@@ -27,7 +25,6 @@ function FormLogin() {
 
     const submitHandleLogin = (event) => {
         event.preventDefault();
-        //dispatch(logIn(email, password));
         dispatch(authenticate(email, password));
     };
 

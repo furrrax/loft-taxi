@@ -6,12 +6,12 @@ export const authenticate = (email, password) => ({
     payload: { email, password }
 });
 
+export const logIn = createAction('@user/logIn');
+export const logOut = createAction('@user/logOut');
+//export const regIn = createAction('@user/regIn');
+
 export const REGISTER = 'REGISTER';
 export const register = (email, name, surname, password) => ({
     type: REGISTER,
     payload: { email, name, surname, password }
 });
-
-export const logIn = createAction('@user/logIn');
-export const logOut = createAction('@user/logOut');
-//export const regIn = createAction('@user/regIn');

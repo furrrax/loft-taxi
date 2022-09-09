@@ -12,7 +12,7 @@
 
 export const serverLogIn = async (email, password) => {
     return fetch(
-        `https://loft-taxi.glitch.me/register`, {
+        `https://loft-taxi.glitch.me/auth`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ export const serverLogIn = async (email, password) => {
                 "password": password
             }),
         }
-        ).then(res => res.json()).then(data => data.success);
+        ).then(responce => responce.json()).then(data => data.success);
 };
 
 export const serverReg = async (email, name, surname, password) => {
@@ -39,5 +39,5 @@ export const serverReg = async (email, name, surname, password) => {
                 "password": password
             }),
         }
-        ).then(res => res.json()).then(data => data.success);
+        ).then(responce => responce.json()).then(data => data.success);
 };

@@ -1,24 +1,24 @@
-import {React, useContext} from "react";
+import {React} from "react";
 import logo from '../img/loft-taxi-logo-inner.svg';
 import MapInner from "../components/MapInner";
 import PopupOrder from "../components/popup/PopupOrder";
 import PopupOrderSuccess from "../components/popup/PopupOrderSuccess";
 import PropTypes from "prop-types";
-//import { AuthContext } from "../AuthContext";
 
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../redux/actions/user";
 import { getIsLoggedIn } from "../redux/selectors/auth";
 
 function PageMap () {
 
-    //const {logOut, isLoggedIn} = useContext(AuthContext);
+    const dispatch = useDispatch();
     const loggedIn = useSelector(getIsLoggedIn);
 
-    // const LogOff = () => {
-    //     logOut();
-    // };
+    const LogOff = () => {
+        dispatch(logOut());
+    };
 
     return (
         <>
@@ -42,7 +42,7 @@ function PageMap () {
                                         </Link>
                                     </li>
                                     <li className="header__nav__item">
-                                        <button /* onClick={LogOff} */ className="header__nav__item__link">Выход</button>
+                                        <button onClick={LogOff} className="header__nav__item__link">Выход</button>
                                     </li>
                                 </ul>
                             </nav>
