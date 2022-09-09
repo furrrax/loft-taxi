@@ -8,8 +8,8 @@ import PropTypes from "prop-types";
 
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 
-import { getIsLoggedIn } from "../redux/selectors/auth";
 import { useSelector } from "react-redux";
+import { getIsLoggedIn } from "../redux/selectors/auth";
 
 function PageMap () {
 

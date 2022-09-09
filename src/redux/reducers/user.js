@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import {logIn, logOut} from '../actions/user';
 
 const initialState = {
-    isLoggedIn: false
+    isLoggedIn: false,
 }
 
 export const userReducer = createReducer(initialState, 
