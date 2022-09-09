@@ -1,15 +1,3 @@
-/* export const serverLogIn = async (email, password) => {
-    return fetch(
-        `https://loft-taxi.glitch.me/auth?username=${email}&password=${password}`
-    ).then(res => res.json()).then(data => data.success);
-}; */
-
-/* export const serverReg = async (email, password, firstname, surname) => {
-    return fetch(
-        `https://loft-taxi.glitch.me/auth?email=${email}&password=${password}&name=${firstname}&surname=${surname}`
-    ).then(res => res.json()).then(data => data.success);
-}; */
-
 export const serverLogIn = async (email, password) => {
     return fetch(
         `https://loft-taxi.glitch.me/auth`, {
