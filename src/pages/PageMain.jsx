@@ -29,7 +29,7 @@ function PageMain() {
             {loggedIn ? (
                 <Navigate to="/map" />
             ) : (
-                <section className="main">
+                <section className="main" data-testid="page-main">
                     <div className="container">
                         <div className="main__sidebar">
                             <div className="main__sidebar__logo">

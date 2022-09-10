@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import { userReducer } from "./reducers/user";
 import { authMiddleware, regMiddleware } from "./middlwares/auth";
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     user: userReducer,
 });
 
