@@ -38,7 +38,7 @@ function FormLogin() {
                         <div className="enter-form__content__inputs">
                             <label htmlFor="email" className="input__wrap">
                                 <div className="input__title">Email</div>
-                                <input data-testid="email" value={email} onChange={emailHandleChange} type="email" name="email" className="input__field" placeholder="mail@mail.ru" data-testid="email" required></input>
+                                <input data-testid="email" value={email} onChange={emailHandleChange} type="email" name="email" className="input__field" placeholder="mail@mail.ru" required></input>
                             </label>
                             <label htmlFor="password" className="input__wrap">
                                 <div className="input__title">Пароль</div>

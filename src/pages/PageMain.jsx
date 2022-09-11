@@ -14,7 +14,7 @@ function PageMain() {
 
     const dispatch = useDispatch();
     const loggedIn = useSelector(getIsLoggedIn);
-    let localstorageStatus = localStorage.getItem('authorized');
+    let localstorageStatus = localStorage.getItem('lt-authorized');
 
     useEffect(() => {
         if(localstorageStatus === 'true') {
