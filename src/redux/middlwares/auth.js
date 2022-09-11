@@ -1,11 +1,11 @@
-import { AUTHENTICATE, logIn, REGISTER } from "../actions/user";
+import { authenticate, logIn, register } from "../actions/user";
 import { serverLogIn, serverReg } from '../api';
 
 const setLocalStorageTrue = () => {localStorage.setItem('authorized', true)}
 const setLocalStorageFalse = () => {localStorage.setItem('authorized', false)}
 
 export const authMiddleware = (store) => (next) => async (action) => {
-    if (action.type === AUTHENTICATE) {
+    if (action.type === authenticate.type) {
 
         const {email, password} = action.payload;
         const success = await serverLogIn(email, password)
@@ -22,7 +22,8 @@ export const authMiddleware = (store) => (next) => async (action) => {
 };
 
 export const regMiddleware = (store) => (next) => async (action) => {
-    if (action.type === REGISTER) {
+    if (action.type === register.type) {
+
         const {email, name, surname, password} = action.payload;
         const success = await serverReg(email, name, surname, password)
 

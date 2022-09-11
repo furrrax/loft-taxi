@@ -4,9 +4,6 @@ import PageMain from './pages/PageMain';
 import PageMap from './pages/PageMap';
 import PageProfile from './pages/PageProfile';
 
-/* import { Provider } from 'react-redux';
-import { store } from './redux/store'; */
-
 import { Route, Routes} from "react-router-dom";
 
 const App = () => {

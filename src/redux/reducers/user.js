@@ -8,7 +8,6 @@ const initialState = {
 export const userReducer = createReducer(initialState, 
     {
         [logIn.type]: (state) => {
-            console.log('LogIn action success')
             state.isLoggedIn = true
         },
     
