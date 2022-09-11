@@ -39,11 +39,8 @@ function FormReg() {
     }, [dispatch, email, name, surname, password]);
 
     if(loggedIn) {
-        return(
-            <Navigate to="/map" />
-        )
-    } else {
-        return(
+        return ( <Navigate to="/map" /> )
+    } return (
             <div className="enter-form">
                 <div className="enter-form__container">
                     <h3 className="enter-form__title">Регистрация</h3>
@@ -79,7 +76,6 @@ function FormReg() {
                 </div>
             </div>
         )
-    }
 
 }
 

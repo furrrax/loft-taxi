@@ -20,8 +20,9 @@ function PageMap () {
         dispatch(logOut());
     },[dispatch]);
 
-    if(loggedIn) {
-        return (
+    if(!loggedIn) {
+        return ( <Navigate to="/login" /> )
+    } return (
             <section className="inner__map">
                 <div className="container">
                     <header className="header">
@@ -57,11 +58,6 @@ function PageMap () {
                 </div>
             </section>
         )
-    } else {
-        return (
-            <Navigate to="/login" />
-        )
-    }
 
 }
 

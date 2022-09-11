@@ -20,8 +20,9 @@ function PageProfile () {
         dispatch(logOut());
     },[dispatch]);
 
-    if(loggedIn) {
-        return (
+    if(!loggedIn) {
+        return ( <Navigate to="/login" /> )
+    } return (
             <section className="inner__profile">
                 <div className="container">
                     <header className="header">
@@ -57,11 +58,6 @@ function PageProfile () {
                 </div>
             </section>
         )
-    } else {
-        return (
-            <Navigate to="/login" />
-        )
-    }
 
 }
 

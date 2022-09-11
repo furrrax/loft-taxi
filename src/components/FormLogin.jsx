@@ -29,11 +29,8 @@ function FormLogin() {
     }, [dispatch, email, password]);
 
     if(loggedIn) {
-        return(
-            <Navigate to="/map" />
-        )
-    } else {
-        return (
+        return ( <Navigate to="/map" /> )
+    } return (
             <div className="enter-form">
                 <div className="enter-form__container">
                     <h3 className="enter-form__title">Войти</h3>
@@ -61,7 +58,6 @@ function FormLogin() {
                 </div>
             </div>
         )
-    }
 
 };
 

@@ -25,11 +25,8 @@ function PageMain() {
     },[dispatch, localstorageStatus]);
 
     if(loggedIn) {
-        return (
-            <Navigate to="/map" />
-        )
-    } else {
-        return (
+        return ( <Navigate to="/map" /> )
+    } return (
             <section className="main" data-testid="page-main">
                 <div className="container">
                     <div className="main__sidebar">
@@ -47,8 +44,7 @@ function PageMain() {
                 </div>
             </section>
         )
-    }
-    
+
 };
 
 export default PageMain;
