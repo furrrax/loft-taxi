@@ -1,39 +1,23 @@
 import React from 'react';
-import PageLogin from './pages/PageLogin';
-import PageReg from './pages/PageReg';
+
+import PageMain from './pages/PageMain';
 import PageMap from './pages/PageMap';
 import PageProfile from './pages/PageProfile';
-import { AuthProvider } from './AuthContext';
 
-const PAGES = {
-	pageLogin: PageLogin,
-	pageReg: PageReg,
-	pageMap: PageMap,
-	pageProfile: PageProfile,
-};
+import { Route, Routes} from "react-router-dom";
 
-class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {page: "pageLogin"};
-	}
+const App = () => {
 
-	setPage = (pageName) => {
-		this.setState({page: pageName});
-	};
-
-	render() {
-		const {page} = this.state;
-		const CurrentPage = PAGES[page];
-
-		return (
-			<AuthProvider>
-				<div className='App'>
-					<CurrentPage setPage={this.setPage}/>
-				</div>
-			</AuthProvider>
-		);
-	}
+	return (
+		<div className='App' data-testid='page-app'>
+			<Routes>
+				<Route path="*" element={<PageMain />} exact></Route>
+				<Route path="/map/*" element={<PageMap />}></Route>
+				<Route path="/profile/*" element={<PageProfile />}></Route>
+				<Route path="*" element={<PageMain />}></Route>
+			</Routes>
+		</div>
+	);
 }
 
 export default App;

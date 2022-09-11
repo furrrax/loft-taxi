@@ -22,14 +22,9 @@ class InteractiveMap extends React.Component {
     }
 
     render() {
-        const style = {
-            //position: 'absolute',
-            height: '500px',
-            width: '100%'
-        };
         return(
             <div className="map-wrapper">
-                <div data-testid="map" className="map" style={style} ref={this.mapContainer} />
+                <div data-testid="map" className="map" ref={this.mapContainer} />
             </div>
         )
     }

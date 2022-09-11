@@ -1,53 +1,64 @@
-import {React, useContext} from "react";
-import logo from '../img/loft-taxi-logo.svg';
+import {React, useCallback} from "react";
+import logo from '../img/loft-taxi-logo-inner.svg';
 import MapInner from "../components/MapInner";
 import PopupOrder from "../components/popup/PopupOrder";
 import PopupOrderSuccess from "../components/popup/PopupOrderSuccess";
 import PropTypes from "prop-types";
-import { AuthContext } from "../AuthContext";
 
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 
-function PageMap (props) {
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../redux/actions/user";
+import { getIsLoggedIn } from "../redux/selectors/auth";
 
-    const {setPage} = props;
-    const {logOut} = useContext(AuthContext);
-    const logOff = () => {
-        logOut();
-        setPage('pageLogin');
-    };
+function PageMap () {
 
-    return (
-        <section className="inner__map">
-            <div className="container">
-                <header className="header">
-                    <div className="header__logo">
-                        <img src={logo} className="header__logo__pic" alt="logo" />
-                        <div className="header__logo__text">loft<span className="header__logo__text--yellow">taxi</span></div>
+    const dispatch = useDispatch();
+    const loggedIn = useSelector(getIsLoggedIn);
+
+    const logOff = useCallback(() => {
+        dispatch(logOut());
+    },[dispatch]);
+
+    if(!loggedIn) {
+        return ( <Navigate to="/login" /> )
+    } return (
+            <section className="inner__map">
+                <div className="container">
+                    <header className="header">
+                        <div className="header__logo">
+                            <img src={logo} className="header__logo__pic" alt="logo" />
+                        </div>
+                        <nav className="header__nav">
+                            <ul className="header__nav__list">
+                                <li className="header__nav__item">
+                                    <Link to="/map">
+                                        <button className="header__nav__item__link">Карта</button>
+                                    </Link>
+                                </li>
+                                <li className="header__nav__item">
+                                    <Link to="/profile">
+                                        <button className="header__nav__item__link">Профиль</button>
+                                    </Link>
+                                </li>
+                                <li className="header__nav__item">
+                                    <button onClick={logOff} className="header__nav__item__link">Выход</button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </header>
+                    <div className="content">
+                        <MapInner />
+                        <Routes>
+                            <Route path="/order/*" element={<PopupOrder />} exact></Route>
+                            <Route path="/order-success/*" element={<PopupOrderSuccess />}></Route>
+                            <Route path="*" element={<PopupOrder />}></Route>
+                        </Routes>
                     </div>
-                    <nav className="header__nav">
-                        <ul className="header__nav__list">
-                            <li className="header__nav__item header__nav__item">
-                                <button onClick={() => setPage('pageMap')} className="header__nav__item__link">Карта</button>
-                            </li>
-                            <li className="header__nav__item header__nav__item">
-                                <button onClick={() => setPage('pageProfile')} className="header__nav__item__link">Профиль</button>
-                            </li>
-                            <li className="header__nav__item header__nav__item">
-                                {/* <button onClick={() => setPage('pageLogin')} className="header__nav__item__link">Выход</button> */}
-                                <button onClick={logOff} className="header__nav__item__link">Выход</button>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
-                <div className="map">
-                    <h1>Страница с картой</h1>
-                    <MapInner />
-                    <PopupOrder />
-                    <PopupOrderSuccess />
                 </div>
-            </div>
-        </section>
-    );
+            </section>
+        )
+
 }
 
 PageMap.propTypes = {
@@ -57,50 +68,3 @@ PageMap.propTypes = {
 }
 
 export default PageMap;
-
-/* class MapPage extends React.Component {
-
-    static propTypes = {
-        pageMap: PropTypes.string,
-        pageProfile: PropTypes.string,
-        pageLogin: PropTypes.string
-    }
-    
-    render() {
-        const {setPage} = this.props;
-
-        return (
-            <section className="inner__map">
-            <div className="container">
-                <header className="header">
-                    <div className="header__logo">
-                        <img src={logo} className="header__logo__pic" alt="logo" />
-                        <div className="header__logo__text">loft<span className="header__logo__text--yellow">taxi</span></div>
-                    </div>
-                    <nav className="header__nav">
-                        <ul className="header__nav__list">
-                            <li className="header__nav__item header__nav__item">
-                                <button onClick={() => setPage('pageMap')} className="header__nav__item__link">Карта</button>
-                            </li>
-                            <li className="header__nav__item header__nav__item">
-                                <button onClick={() => setPage('pageProfile')} className="header__nav__item__link">Профиль</button>
-                            </li>
-                            <li className="header__nav__item header__nav__item">
-                                <button onClick={() => setPage('pageLogin')} className="header__nav__item__link">Выход</button>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
-                <div className="map">
-                    <h1>Страница с картой</h1>
-                    <MapInner />
-                    <PopupOrder />
-                    <PopupOrderSuccess />
-                </div>
-            </div>
-        </section>
-        );
-    }
-}
-
-export default MapPage; */
