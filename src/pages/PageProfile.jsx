@@ -37,7 +37,7 @@ function PageProfile () {
                                     </Link>
                                 </li>
                                 <li className="header__nav__item">
-                                    <Link to="profile">
+                                    <Link to="/profile">
                                         <button className="header__nav__item__link">Профиль</button>
                                     </Link>
                                 </li>
@@ -50,9 +50,9 @@ function PageProfile () {
                     <div className="content">
                         <MapInner />
                         <Routes>
-                            <Route path="/profile/*" element={<PopupProfile />} exact></Route>
-                            <Route path="/profile-success/*" element={<PopupProfileSuccess />}></Route>
-                            <Route path="*" element={<PopupProfile />}></Route>
+                            <Route path="profile-form" element={<PopupProfile />} exact></Route>
+                            <Route path="profile-success" element={<PopupProfileSuccess />} ></Route>
+                            <Route path="/" element={<PopupProfile />}></Route>
                         </Routes>
                     </div>
                 </div>

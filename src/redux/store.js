@@ -3,11 +3,13 @@ import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from "./saga/sagas";
 import { combineReducers } from "redux";
 import { userReducer } from "./reducers/user";
+import { cardReducer } from "./reducers/card";
 
 export const sagaMiddleware = createSagaMiddleware();
 
 export const rootReducer = combineReducers({
     user: userReducer,
+    card: cardReducer
 });
 
 export const store = configureStore({

@@ -264,7 +264,7 @@ input[type="number"] {
 }
 
 .popup {
-  display: none;
+  /* display: none; */
   position: absolute;
   background: #FFFFFF;
   box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.1);

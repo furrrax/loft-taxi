@@ -11,9 +11,9 @@ const App = () => {
 	return (
 		<div className='App' data-testid='page-app'>
 			<Routes>
-				<Route path="*" element={<PageMain />} exact></Route>
-				<Route path="/map/*" element={<PageMap />}></Route>
-				<Route path="/profile/*" element={<PageProfile />}></Route>
+				<Route path="/" element={<PageMain />} exact></Route>
+				<Route path="map/*" element={<PageMap />}></Route>
+				<Route path="profile/*" element={<PageProfile />}></Route>
 				<Route path="*" element={<PageMain />}></Route>
 			</Routes>
 		</div>

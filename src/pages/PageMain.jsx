@@ -25,7 +25,7 @@ function PageMain() {
     },[dispatch, localstorageStatus]);
 
     if(loggedIn) {
-        return ( <Navigate to="/map" /> )
+        return ( <Navigate to="profile" /> )
     } return (
             <section className="main" data-testid="page-main">
                 <div className="container">
@@ -36,9 +36,9 @@ function PageMain() {
                     </div>
                     <div className="main__content">
                         <Routes>
-                            <Route path="/login" element={<FormLogin />} exact></Route>
-                            <Route path="/reg" element={<FormReg />}></Route>
-                            <Route path="*" element={<FormLogin />}></Route>
+                            <Route path="login" element={<FormLogin />} exact></Route>
+                            <Route path="reg" element={<FormReg />}></Route>
+                            <Route path="/" element={<FormLogin />}></Route>
                         </Routes>
                     </div>
                 </div>
