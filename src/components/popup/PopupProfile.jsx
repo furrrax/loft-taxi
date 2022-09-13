@@ -9,6 +9,11 @@ import { getCard } from "../../redux/actions/card";
 
 import { selectCardNumber, selectCardDate } from "../../redux/selectors/card";
 
+import Input from '@mui/material/Input';
+import Button from '@mui/material/Button';
+import InputMask from "react-input-mask";
+import { getNativeSelectUtilityClasses } from "@mui/material";
+
 function PopupProfile() {
 
     const dispatch = useDispatch();
@@ -58,23 +63,47 @@ function PopupProfile() {
                             <div className="popup__content__row">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">Имя владельца</div>
-                                    <input value={cardName} onChange={cardNameHandleChange} type="text" name="cardName" className="input__field" placeholder="Loft"></input>
+                                    <Input contentEditable="true" value={cardName} onChange={cardNameHandleChange} type="text" name="cardName" className="input__field" placeholder="Loft" required></Input>
                                 </div>
                             </div>
                             <div className="popup__content__row">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">Номер карты</div>
-                                    <input value={cardNumber} onChange={cardNumberHandleChange} type="text" name="cardNumber" className="input__field" placeholder="5545  2300  3432  4521" maxLength={19}></input>
+                                    <InputMask
+                                        mask="9999 9999 9999 9999"
+                                        maskChar="*"
+                                        type="text"
+                                        value={cardNumber}
+                                        onChange={cardNumberHandleChange}
+                                        placeholder="5545 2300 3432 4521"
+                                        name="cardNumber"
+                                        className="input__field"
+                                        required
+                                        >
+                                        {(inputProps) => <Input {...inputProps} />}
+                                    </InputMask>
                                 </div>
                             </div>
                             <div className="popup__content__row popup__content__row--2x">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">MM/YY</div>
-                                    <input value={expiryDate} onChange={expiryDateHandleChange} type="text" name="expiryDate" className="input__field" placeholder="05/08"></input>
+                                    <InputMask
+                                        mask="99/99"
+                                        maskChar="*"
+                                        type="text"
+                                        value={expiryDate}
+                                        onChange={expiryDateHandleChange}
+                                        placeholder="05/08"
+                                        name="expiryDate"
+                                        className="input__field"
+                                        required
+                                        >
+                                        {(inputProps) => <Input {...inputProps} />}
+                                    </InputMask>
                                 </div>
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">CVC</div>
-                                    <input value={cvc} onChange={cvcHandleChange} type="text" name="cvc" className="input__field" maxLength={3} placeholder="667"></input>
+                                    <Input value={cvc} onChange={cvcHandleChange} type="number" name="cvc" className="input__field" maxLength={3} placeholder="667" required></Input>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +137,7 @@ function PopupProfile() {
                             </div>
                         </div>
                     </div>
-                    <button className="button-submit" type="submit">Сохранить</button>
+                    <Button variant="contained" className="button-submit" type="submit">Сохранить</Button>
                 </form>
             </div>
         </div>

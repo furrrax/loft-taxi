@@ -5,6 +5,8 @@ import picCar1 from "../../img/option-car01.png";
 import picCar2 from "../../img/option-car02.png";
 import picCar3 from "../../img/option-car03.png";
 
+import Button from '@mui/material/Button';
+
 function PopupOrder() {
 
     return(
@@ -66,7 +68,7 @@ function PopupOrder() {
                         </div>
                     </li>
                 </ul>
-                <button className="button-submit" type="submit">Заказать</button>
+                <Button variant="contained" className="button-submit" type="submit">Заказать</Button>
             </div>
         </form>
     ) 

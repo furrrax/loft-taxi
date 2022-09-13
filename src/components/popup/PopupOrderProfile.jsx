@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Button from '@mui/material/Button';
+
 function PopupOrderProfile() {
     
     return(
@@ -11,7 +13,7 @@ function PopupOrderProfile() {
                 Укажите информацию о банковской карте, чтобы сделать заказ.
                 </span>
                 <Link to="/profile">
-                    <button className="button-submit" type="submit">Перейти в профиль</button>
+                    <Button variant="contained" className="button-submit" type="submit">Перейти в профиль</Button>
                 </Link>
             </div>
         </div>

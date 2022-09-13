@@ -1,5 +1,7 @@
 import React from "react";
 
+import Button from '@mui/material/Button';
+
 function PopupProfileSuccess() {
 
     return(
@@ -9,7 +11,7 @@ function PopupProfileSuccess() {
                 <span className="popup__subtitle">
                     Платёжные данные обновлены. Теперь вы можете заказывать такси.
                 </span>
-                <button className="button-submit" type="submit">Перейти на карту</button>
+                <Button variant="contained" className="button-submit" type="submit">Перейти на карту</Button>
             </div>
         </div>
     )

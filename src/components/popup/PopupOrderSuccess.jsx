@@ -1,5 +1,7 @@
 import React from "react";
 
+import Button from '@mui/material/Button';
+
 function PopupOrderSuccess() {
     
     return(
@@ -9,7 +11,7 @@ function PopupOrderSuccess() {
                 <span className="popup__subtitle">
                     Ваше такси уже едет к вам. Прибудет приблизительно через 10 минут.
                 </span>
-                <button className="button-submit" type="submit">Сделать новый заказ</button>
+                <Button variant="contained" className="button-submit" type="submit">Сделать новый заказ</Button>
             </div>
         </div>
     )
