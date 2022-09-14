@@ -1,11 +1,9 @@
 import { React, useCallback } from "react";
 import logo from '../img/loft-taxi-logo-inner.svg';
 import MapInner from "../components/MapInner";
-import PopupProfile from "../components/popup/PopupProfile";
-import PopupProfileSuccess from "../components/popup/PopupProfileSuccess";
 import PropTypes from "prop-types";
 
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../redux/actions/user";
@@ -49,11 +47,7 @@ function PageProfile () {
                     </header>
                     <div className="content">
                         <MapInner />
-                        <Routes>
-                            <Route path="profile-form" element={<PopupProfile />} exact></Route>
-                            <Route path="profile-success" element={<PopupProfileSuccess />} ></Route>
-                            <Route path="/" element={<PopupProfile />}></Route>
-                        </Routes>
+                        <Outlet />
                     </div>
                 </div>
             </section>

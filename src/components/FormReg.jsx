@@ -42,7 +42,7 @@ function FormReg() {
     }, [dispatch, email, name, surname, password]);
 
     if(loggedIn) {
-        return ( <Navigate to="/map" /> )
+        return ( <Navigate to="map" /> )
     } return (
             <div className="enter-form">
                 <div className="enter-form__container">

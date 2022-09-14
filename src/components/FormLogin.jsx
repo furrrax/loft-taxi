@@ -32,7 +32,7 @@ function FormLogin() {
     }, [dispatch, email, password]);
 
     if(loggedIn) {
-        return ( <Navigate to="/map" /> )
+        return ( <Navigate to="map" /> )
     } return (
             <div className="enter-form">
                 <div className="enter-form__container">

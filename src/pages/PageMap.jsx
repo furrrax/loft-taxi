@@ -1,12 +1,9 @@
 import {React, useCallback} from "react";
 import logo from '../img/loft-taxi-logo-inner.svg';
 import MapInner from "../components/MapInner";
-import PopupOrder from "../components/popup/PopupOrder";
-import PopupOrderSuccess from "../components/popup/PopupOrderSuccess";
-import PopupOrderProfile from "../components/popup/PopupOrderProfile";
 import PropTypes from "prop-types";
 
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../redux/actions/user";
@@ -52,12 +49,7 @@ function PageMap () {
                         </header>
                         <div className="content">
                             <MapInner />
-                            <Routes>
-                                <Route path="order" element={<PopupOrder />} exact></Route>
-                                <Route path="order-success" element={<PopupOrderSuccess />}></Route>
-                                <Route path="order-to-profile" element={<PopupOrderProfile />}></Route>
-                                <Route path="/" element={<PopupOrder />}></Route>
-                            </Routes>
+                            <Outlet />
                         </div>
                     </div>
                 </section>
