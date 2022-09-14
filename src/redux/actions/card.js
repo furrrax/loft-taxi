@@ -8,6 +8,9 @@ export const updateCard = createAction('@card/updateCard', (cardNumber, expiryDa
 
 export const getCard = createAction('@card/getCard');
 
+export const cardStateOn = createAction('@card/cardStateOn');
+export const cardStateOff = createAction('@card/cardStateOff');
+
 export const setCardNumber = createAction("@card/cardNumber", (cardNumber) => {
     return { payload: {cardNumber} }
 });

@@ -8,11 +8,20 @@ import { logIn, logOut } from "../redux/actions/user";
 import { getIsLoggedIn } from "../redux/selectors/auth";
 import { useEffect } from "react";
 
+import { checkCardState } from "../redux/selectors/card";
+import { getCard } from "../redux/actions/card";
+
+
 function PageMain() {
 
     const dispatch = useDispatch();
     const loggedIn = useSelector(getIsLoggedIn);
+    const cardState = useSelector(checkCardState);
     let localstorageStatus = localStorage.getItem('lt-authorized');
+
+    useEffect(() => {
+        dispatch(getCard());
+    },[dispatch]);
 
     useEffect(() => {
         if(localstorageStatus === 'true') {
@@ -22,8 +31,13 @@ function PageMain() {
         }
     },[dispatch, localstorageStatus]);
 
+
     if(loggedIn) {
-        return ( <Navigate to="/map/" /> )
+        if(!cardState) {
+            return ( <Navigate to="/map/order-to-profile" /> )
+        } else {
+            return ( <Navigate to="/map" /> )
+        }
     } return (
             <section className="main" data-testid="page-main">
                 <div className="container">

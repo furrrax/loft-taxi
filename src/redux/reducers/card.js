@@ -1,7 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setCardNumber, setCardDate } from '../actions/card';
+import { setCardNumber, setCardDate, cardStateOn, cardStateOff } from '../actions/card';
 
 const initialState = {
+    cardDataReceived: false,
     userCard: {
         cardNumber: '',
         cardDate: ''
@@ -16,6 +17,14 @@ export const cardReducer = createReducer(initialState,
 
         [setCardDate.type]: (state, action) => {
             state.userCard.cardDate = action.payload
+        },
+
+        [cardStateOn.type]: (state) => {
+            state.cardDataReceived = true
+        },
+
+        [cardStateOff.type]: (state) => {
+            state.cardDataReceived = false
         },
     }
 )

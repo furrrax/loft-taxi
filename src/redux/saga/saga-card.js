@@ -1,5 +1,5 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
-import { updateCard, getCard, setCardNumber, setCardDate } from '../actions/card';
+import { updateCard, getCard, setCardNumber, setCardDate, cardStateOn, cardStateOff } from '../actions/card';
 import { serverCardUpdate, serverCardGetData } from '../api';
 
 export function* getCardWatcher() {
@@ -12,11 +12,19 @@ function* loadCardSaga(action) {
 
     if (success) {
         //console.log('data received')
-        //console.log(success, success.cardName);
+        console.log(success, success.cardName);
         yield put(setCardNumber(success.cardNumber));
         yield put(setCardDate(success.expiryDate));
+        if (success.cardName === undefined) {
+            yield put(cardStateOff());
+            console.log('card data undefined')
+        } else {
+            console.log('card data OK')
+            yield put(cardStateOn());
+        }
     } else {
         console.log('get data fail')
+        yield put(cardStateOff());
     }
 }
 
