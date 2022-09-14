@@ -12,6 +12,7 @@ import { getIsLoggedIn } from "../redux/selectors/auth";
 import { checkCardState } from "../redux/selectors/card";
 import { getCard } from "../redux/actions/card";
 
+
 function PageMap () {
 
     const dispatch = useDispatch();

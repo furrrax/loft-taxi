@@ -309,13 +309,19 @@ input[type="number"] {
   position: relative;
   border: 0;
   padding-left: 30px;
+  width: 100%;
+}
+
+.popup__address__input__field::before,
+.popup__address__input__field::after {
+  display: none;
 }
 
 .popup__address__input:after {
   content: '';
   position: absolute;
   left: 0;
-  top: 4px;
+  top: 8px;
 }
 
 .popup__address__input:first-child:after {
