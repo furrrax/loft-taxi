@@ -3,9 +3,12 @@ import logo from "../../img/loft-taxi-logo-clear.svg";
 import cardPic1 from "../../img/card-pic1.svg";
 import cardPic2 from "../../img/card-pic2.svg";
 
+import { useNavigate } from "react-router-dom";
+
 import { updateCard } from "../../redux/actions/card";
 import { useDispatch, useSelector } from "react-redux";
 import { getCard } from "../../redux/actions/card";
+import { checkCardState } from "../../redux/selectors/card";
 
 import { selectCardNumber, selectCardDate } from "../../redux/selectors/card";
 
@@ -16,6 +19,7 @@ import InputMask from "react-input-mask";
 function PopupProfile() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     let getCardNumber = useSelector(selectCardNumber).cardNumber;
     let getCardDate = useSelector(selectCardDate).cardDate;
 
@@ -23,6 +27,8 @@ function PopupProfile() {
     const [cardNumber, setCardNumber] = useState('');
     const [expiryDate, setExpiryDate] = useState('');
     const [cvc, setCvc] = useState('');
+
+    const cardState = useSelector(checkCardState);
 
     useEffect(() => {
         dispatch(getCard());
@@ -47,7 +53,10 @@ function PopupProfile() {
     const submitHandleCard = useCallback((event) => {
         event.preventDefault();
         dispatch(updateCard(cardNumber, expiryDate, cardName, cvc));
-    }, [dispatch, cardNumber, expiryDate, cardName, cvc]);
+        if(cardState) {
+            navigate('/profile/profile-success');
+        }
+    }, [dispatch, navigate, cardState, cardNumber, expiryDate, cardName, cvc]);
 
     return(
         <div className="popup popup__profile popup--profile">
