@@ -77,7 +77,6 @@ function PopupProfile() {
                                         placeholder="5545 2300 3432 4521"
                                         name="cardNumber"
                                         className="input__field"
-                                        
                                         >
                                         {(inputProps) => <Input {...inputProps} />}
                                     </InputMask>
@@ -95,7 +94,6 @@ function PopupProfile() {
                                         placeholder="05/08"
                                         name="expiryDate"
                                         className="input__field"
-                                        
                                         >
                                         {(inputProps) => <Input {...inputProps} />}
                                     </InputMask>
