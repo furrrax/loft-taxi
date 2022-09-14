@@ -62,7 +62,7 @@ function PopupProfile() {
                             <div className="popup__content__row">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">Имя владельца</div>
-                                    <Input contentEditable="true" value={cardName} onChange={cardNameHandleChange} type="text" name="cardName" className="input__field" placeholder="Loft" required></Input>
+                                    <Input value={cardName} onChange={cardNameHandleChange} type="text" name="cardName" className="input__field" placeholder="Loft" required></Input>
                                 </div>
                             </div>
                             <div className="popup__content__row">
