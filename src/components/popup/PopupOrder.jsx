@@ -11,20 +11,22 @@ import MenuItem from '@mui/material/MenuItem';
 
 import { useDispatch, useSelector } from "react-redux";
 import { getAddressList } from "../../redux/actions/map";
-import { selectAddressList } from "../../redux/selectors/map";
+import { selectAddressList1, selectAddressList2 } from "../../redux/selectors/map";
 
 function PopupOrder() {
 
     const dispatch = useDispatch();
     const [addressFrom, setAddressFrom] = useState('');
-    const getAddresses = useSelector(selectAddressList);
+    let getAddresses1 = useSelector(selectAddressList1);
+    let getAddresses2 = useSelector(selectAddressList2);
 
     useEffect(() => {
         //console.log('popup MAP updated');
         dispatch(getAddressList());
 
-        console.log('address list from store: ' + getAddresses);
-    },[dispatch, getAddresses]);
+        console.log('address list 1 from store: ' + getAddresses1);
+        console.log('address list 2 from store: ' + getAddresses2);
+    },[dispatch, getAddresses1, getAddresses2]);
 
     const addressFromHandle = (event) => {
         setAddressFrom(event.target.value);
