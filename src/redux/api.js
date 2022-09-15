@@ -57,3 +57,14 @@ export const serverCardGetData = async (data) => {
     })
     .then(responce => responce.json());
 };
+
+export const serverGetAddressList = async () => {
+    return fetch(`https://loft-taxi.glitch.me/addressList`,
+    {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(responce => responce.json());
+};

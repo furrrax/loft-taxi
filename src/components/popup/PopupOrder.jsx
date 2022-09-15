@@ -1,6 +1,6 @@
-import {React, useState, useCallback, useRef} from "react";
-import cross from "../../img/icon-cross.svg";
-import arrow from "../../img/icon-arrow.svg";
+import {React, useState, useEffect} from "react";
+//import cross from "../../img/icon-cross.svg";
+//import arrow from "../../img/icon-arrow.svg";
 import picCar1 from "../../img/option-car01.png";
 import picCar2 from "../../img/option-car02.png";
 import picCar3 from "../../img/option-car03.png";
@@ -9,12 +9,24 @@ import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
+import { useDispatch, useSelector } from "react-redux";
+import { getAddressList } from "../../redux/actions/map";
+import { selectAddressList } from "../../redux/selectors/map";
 
 function PopupOrder() {
 
+    const dispatch = useDispatch();
     const [addressFrom, setAddressFrom] = useState('');
+    const getAddresses = useSelector(selectAddressList);
 
-    const adressFromHandle = (event) => {
+    useEffect(() => {
+        //console.log('popup MAP updated');
+        dispatch(getAddressList());
+
+        console.log('address list from store: ' + getAddresses);
+    },[dispatch, getAddresses]);
+
+    const addressFromHandle = (event) => {
         setAddressFrom(event.target.value);
     };
 
@@ -32,7 +44,7 @@ function PopupOrder() {
                     <Select
                             variant="standard"
                             value={addressFrom}
-                            onChange={adressFromHandle}
+                            onChange={addressFromHandle}
                             displayEmpty
                             inputProps={{ 'aria-label': 'Without label' }}
                             className="popup__address__input__field"

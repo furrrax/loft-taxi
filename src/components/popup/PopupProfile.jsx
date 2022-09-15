@@ -1,4 +1,4 @@
-import {React, useState, useCallback, useEffect} from "react";
+import {React, useState, useCallback, useEffect, useRef} from "react";
 import logo from "../../img/loft-taxi-logo-clear.svg";
 import cardPic1 from "../../img/card-pic1.svg";
 import cardPic2 from "../../img/card-pic2.svg";
@@ -14,7 +14,9 @@ import { selectCardNumber, selectCardDate } from "../../redux/selectors/card";
 
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
-import InputMask from "react-input-mask";
+import InputMask from 'react-input-mask';
+
+//import { IMaskInput } from "react-imask";
 
 function PopupProfile() {
 
@@ -77,6 +79,8 @@ function PopupProfile() {
                             <div className="popup__content__row">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">Номер карты</div>
+                                    {/* <Input className="input__field input__field--card" type="text" value={cardNumber} onChange={cardNumberHandleChange} placeholder="5545 2300 3432 4521" name="cardNumber"/> */}
+                                    {/* <InputMask mask="9999 9999 9999 9999" /> */}
                                     <InputMask
                                         mask="9999 9999 9999 9999"
                                         maskChar="*"

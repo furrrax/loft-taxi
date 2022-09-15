@@ -12,18 +12,18 @@ function* loadCardSaga(action) {
 
     if (success) {
         //console.log('data received')
-        console.log(success, success.cardName);
+        //console.log(success, success.cardName);
         yield put(setCardNumber(success.cardNumber));
         yield put(setCardDate(success.expiryDate));
         if (success.cardName === undefined) {
             yield put(cardStateOff());
-            console.log('card data undefined')
+            //console.log('card data undefined')
         } else {
-            console.log('card data OK')
+            //console.log('card data OK')
             yield put(cardStateOn());
         }
     } else {
-        console.log('get data fail')
+        //console.log('get data fail')
         yield put(cardStateOff());
     }
 }
@@ -35,10 +35,10 @@ export function* updateCardData(action) {
     if(success) {
         //setStorageAuthTrue();
         yield put(getCard());
-        console.log('card data updated');
+        //console.log('card data updated');
     } else {
         //setStorageAuthFalse();
-        console.log('card data false');
+        //console.log('card data false');
     }
 }
 
