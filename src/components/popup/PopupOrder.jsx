@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from "react";
+import {React, useState, useEffect, useCallback} from "react";
 //import cross from "../../img/icon-cross.svg";
 //import arrow from "../../img/icon-arrow.svg";
 import picCar1 from "../../img/option-car01.png";
@@ -10,53 +10,77 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
 import { useDispatch, useSelector } from "react-redux";
-import { getAddressList } from "../../redux/actions/map";
-import { selectAddressList1, selectAddressList2 } from "../../redux/selectors/map";
+import { getAddressList, updateCoords } from "../../redux/actions/map";
+import { selectAddressList1, selectAddressList2, selectCoord1, selectCoord2 } from "../../redux/selectors/map";
 
 function PopupOrder() {
 
     const dispatch = useDispatch();
-    const [addressFrom, setAddressFrom] = useState('');
+    const [address1, setAddressFrom] = useState('');
+    const [address2, setAddressTo] = useState('');
+
     let getAddresses1 = useSelector(selectAddressList1);
     let getAddresses2 = useSelector(selectAddressList2);
+    let getCoords1 = useSelector(selectCoord1);
+    let getCoords2 = useSelector(selectCoord2);
 
-    useEffect(() => {
-        //console.log('popup MAP updated');
+    /* useEffect(() => {
+        console.log('popup MAP updated');
         dispatch(getAddressList());
+
+        dispatch(updateCoords());
 
         console.log('address list 1 from store: ' + getAddresses1);
         console.log('address list 2 from store: ' + getAddresses2);
-    },[dispatch, getAddresses1, getAddresses2]);
 
-    const addressFromHandle = (event) => {
+        console.log('coords1 from store: ' + getCoords1);
+        console.log('coords2 from store: ' + getCoords2);
+    },[dispatch, getAddresses1, getAddresses2, getCoords1, getCoords2]); */
+
+    const addressFromHandle = useCallback((event) => {
         setAddressFrom(event.target.value);
-    };
+    }, []);
 
-    const [addressTo, setAddressTo] = useState('');
-
-    const addressToHandle = (event) => {
+    const addressToHandle = useCallback((event) => {
         setAddressTo(event.target.value);
-    };
+    }, []);
+
+    const submitHandleOrderForm = useCallback((event) => {
+        event.preventDefault();
+
+        dispatch(getAddressList());
+
+        dispatch(updateCoords(address1, address2));
+        
+        console.log(address1, address2)
+
+        console.log('address list 1 from store: ' + getAddresses1);
+        console.log('address list 2 from store: ' + getAddresses2);
+
+        console.log('coords1 from store: ' + getCoords1);
+        console.log('coords2 from store: ' + getCoords2);
+    }, [dispatch, getAddresses1, getAddresses2, getCoords1, getCoords2, address1, address2]);
     
     return(
-        <form className="popup popup__order popup--map">
+        <form className="popup popup__order popup--map" onSubmit={submitHandleOrderForm}>
             <div className="popup__address">
                 <div className="popup__address__input popup__address__input--start">
                     {/* <input type="text" className="popup__address__input__field" placeholder="ул. Жуковского, 5"></input> */}
                     <Select
                             variant="standard"
-                            value={addressFrom}
+                            value={address1}
                             onChange={addressFromHandle}
                             displayEmpty
                             inputProps={{ 'aria-label': 'Without label' }}
                             className="popup__address__input__field"
                         >
                         <MenuItem value="">
-                            <p>ул. Жуковского, 5</p>
+                            
                         </MenuItem>
-                        <MenuItem value={1}>ул. Зеленая, 3</MenuItem>
-                        <MenuItem value={2}>пр-т Ленина, 10</MenuItem>
-                        <MenuItem value={3}>ул. Артема, 220</MenuItem>
+                        <MenuItem value={`Пулково (LED)`}>Пулково (LED)</MenuItem>
+                        <MenuItem value={`Эрмитаж`}>Эрмитаж</MenuItem>
+                        <MenuItem value={`Кинотеатр Аврора`}>Кинотеатр Аврора</MenuItem>
+                        <MenuItem value={`Мариинский театр`}>Мариинский театр</MenuItem>
                     </Select>
                     {/* <div className="popup__address__input__btns">
                         <button className="popup__address__input__btns__cross">
@@ -71,18 +95,19 @@ function PopupOrder() {
                     {/* <input type="text" className="popup__address__input__field" placeholder="ул. Заславского, 3"></input> */}
                     <Select
                             variant="standard"
-                            value={addressTo}
+                            value={address2}
                             onChange={addressToHandle}
                             displayEmpty
                             inputProps={{ 'aria-label': 'Without label' }}
                             className="popup__address__input__field"
                         >
-                        <MenuItem value="">
-                            <p>ул. Жуковского, 5</p>
-                        </MenuItem>
-                        <MenuItem value={1}>ул. Зеленая, 3</MenuItem>
-                        <MenuItem value={2}>пр-т Ленина, 10</MenuItem>
-                        <MenuItem value={3}>ул. Артема, 220</MenuItem>
+                            <MenuItem value="">
+                            
+                            </MenuItem>
+                            <MenuItem value={`Пулково (LED)`}>Пулково (LED)</MenuItem>
+                            <MenuItem value={`Эрмитаж`}>Эрмитаж</MenuItem>
+                            <MenuItem value={`Кинотеатр Аврора`}>Кинотеатр Аврора</MenuItem>
+                            <MenuItem value={`Мариинский театр`}>Мариинский театр</MenuItem>
                     </Select>
                     {/* <div className="popup__address__input__btns">
                         <button className="popup__address__input__btns__cross">
