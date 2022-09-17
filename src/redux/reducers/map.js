@@ -2,22 +2,22 @@ import { createReducer } from '@reduxjs/toolkit';
 import { setAddressList, setCoords } from '../actions/map';
 
 const initialState = {
-    address1: '',
-    address2: '',
-    coord1: '',
-    coord2: ''
+    addressList: '',
+    coordinates: '',
 }
 
 export const addressReducer = createReducer(initialState, 
     {
         [setAddressList.type]: (state, action) => {
-            state.address1 = action.payload
-            state.address2 = action.payload
+            state.addressList = action.payload
+            console.log('Все адреса из стора: ' + state.addressList)
+            //console.log('Первые 2 адреса из стора: ' + state.addressList[0], state.addressList[1])
+            //console.log(typeof state.addressList)
         },
 
         [setCoords.type]: (state, action) => {
-            state.coord1 = action.payload
-            state.coord2 = action.payload
+            state.coordinates = action.payload
+            console.log('Координаты из стора: ' + state.coordinates)
         },
     }
 )

@@ -3,10 +3,6 @@ import { createAction } from "@reduxjs/toolkit";
 
 export const getAddressList = createAction('@map/getAddressList');
 
-/* export const setAddressList = createAction("@map/setAddressList", (addresses) => {
-    return { payload: addresses }
-}); */
-
 export const setAddressList = createAction("@map/setAddressList")
 
 export const updateCoords = createAction('@map/updateCoords', (address1, address2) => {

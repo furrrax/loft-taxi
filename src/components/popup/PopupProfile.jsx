@@ -73,7 +73,7 @@ function PopupProfile() {
                             <div className="popup__content__row">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">Имя владельца</div>
-                                    <Input value={cardName} onChange={cardNameHandleChange} type="text" name="cardName" className="input__field" placeholder="Loft" ></Input>
+                                    <Input required value={cardName} onChange={cardNameHandleChange} type="text" name="cardName" className="input__field" placeholder="Loft" ></Input>
                                 </div>
                             </div>
                             <div className="popup__content__row">
@@ -90,6 +90,7 @@ function PopupProfile() {
                                         placeholder="5545 2300 3432 4521"
                                         name="cardNumber"
                                         className="input__field"
+                                        required
                                         >
                                         {(inputProps) => <Input {...inputProps} />}
                                     </InputMask>
@@ -107,13 +108,14 @@ function PopupProfile() {
                                         placeholder="05/08"
                                         name="expiryDate"
                                         className="input__field"
+                                        required
                                         >
                                         {(inputProps) => <Input {...inputProps} />}
                                     </InputMask>
                                 </div>
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">CVC</div>
-                                    <Input value={cvc} onChange={cvcHandleChange} type="number" name="cvc" className="input__field" maxLength={3} placeholder="667" ></Input>
+                                    <Input required value={cvc} onChange={cvcHandleChange} type="number" name="cvc" className="input__field" maxLength={3} placeholder="667" ></Input>
                                 </div>
                             </div>
                         </div>

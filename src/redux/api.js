@@ -48,7 +48,7 @@ export const serverCardUpdate = async (cardNumber, expiryDate, cardName, cvc) =>
 };
 
 export const serverCardGetData = async (data) => {
-    return fetch(`https://loft-taxi.glitch.me/card?token=${data}`,
+    return await fetch(`https://loft-taxi.glitch.me/card?token=${data}`,
     {
         method: 'GET',
         headers: {
@@ -59,7 +59,7 @@ export const serverCardGetData = async (data) => {
 };
 
 export const serverGetAddressList = async () => {
-    return fetch(`https://loft-taxi.glitch.me/addressList`,
+    return await fetch(`https://loft-taxi.glitch.me/addressList`,
     {
         method: 'GET',
         headers: {
@@ -70,7 +70,7 @@ export const serverGetAddressList = async () => {
 };
 
 export const serverGetCoordinates = async (payload) => {
-    return fetch(
+    return await fetch(
         `https://loft-taxi.glitch.me/route?address1=${payload.address1}&address2=${payload.address2}`, {
             method: 'GET',
             headers: {

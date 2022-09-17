@@ -636,3 +636,7 @@ input[type="number"] {
 .card__row__number__item:last-child {
   margin-right: 0;
 }
+
+.MuiButtonBase-root.hidden {
+  display: none;
+}

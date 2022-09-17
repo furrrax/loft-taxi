@@ -1,4 +1,4 @@
-import { takeEvery, call, put, take } from 'redux-saga/effects';
+import { takeEvery, call, put } from 'redux-saga/effects';
 import { getAddressList, setAddressList, updateCoords, setCoords } from '../actions/map';
 import { serverGetAddressList, serverGetCoordinates } from '../api';
 
@@ -9,13 +9,12 @@ export function* getAddressListWatcher() {
 function* loadAddressListSaga(action) {
     const data = action.payload;
     const success = yield call(serverGetAddressList, data);
-
     if (success) {
+        //console.log('address list: ' + success.addresses[0]);
         yield put(setAddressList(success.addresses));
-        console.log('address received');
-        console.log('address list: ' + success.addresses);
+        console.log('server: address received');
     } else {
-        console.log('address data fail')
+        console.log('server: address data fail')
     }
 }
 
@@ -29,9 +28,14 @@ function* loadCoordsSaga(action) {
 
     if (success) {
         yield put(setCoords(success));
-        console.log('coords received');
-        console.log(success);
+        console.log('server: coords received');
+        //console.log(success);
     } else {
-        console.log('coords data fail')
+        console.log('server: coords data fail')
     }
 }
+
+/* export function* mapSagas() {
+    yield call(getAddressListWatcher)
+    yield call(getCoordsWatcher)
+} */

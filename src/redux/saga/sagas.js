@@ -6,6 +6,7 @@ import { regCardSaga } from './saga-card';
 import { getCardWatcher } from './saga-card';
 import { getAddressListWatcher } from './saga-map';
 import { getCoordsWatcher } from './saga-map';
+//import { mapSagas } from './saga-map';
 
 export function* rootSaga() {
     yield all([
@@ -15,5 +16,6 @@ export function* rootSaga() {
         fork(getCardWatcher),
         fork(getAddressListWatcher),
         fork(getCoordsWatcher),
+        //fork(mapSagas),
     ]);
 }
