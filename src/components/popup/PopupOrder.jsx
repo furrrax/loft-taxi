@@ -70,7 +70,7 @@ function PopupOrder() {
         >
             <MenuItem value="" disabled selected>Откуда</MenuItem>
             {addressList1.map((address, index) => (
-                <MenuItem /* onClick={handleClickMenuItem} */ className="menu__item__1" key={index} data-index={index} value={address}>{address}</MenuItem>
+                <MenuItem className="menu__item__1" key={index} data-index={index} value={address}>{address}</MenuItem>
             ))}
         </Select>
     );
@@ -86,7 +86,7 @@ function PopupOrder() {
         >
             <MenuItem value="" disabled selected>Куда</MenuItem>
             {addressList2.map((address, index) => (
-                <MenuItem /* onClick={handleClickMenuItem} */ className="menu__item__2" key={index} data-index={index} value={address}>{address}</MenuItem>
+                <MenuItem className="menu__item__2" key={index} data-index={index} value={address}>{address}</MenuItem>
             ))}
         </Select>
     );
@@ -110,6 +110,7 @@ function PopupOrder() {
                 <ul className="popup__option__list">
                     {options.map((option, index) => (
                         <li 
+                            key={index}
                             className={`popup__option__list__item ${active === option && 'active'}`}
                             onClick={() => setActive(option)}
                         >

@@ -14,9 +14,6 @@ import { selectCardNumber, selectCardDate } from "../../redux/selectors/card";
 
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
-import InputMask from 'react-input-mask';
-
-//import { IMaskInput } from "react-imask";
 
 function PopupProfile() {
 
@@ -42,10 +39,26 @@ function PopupProfile() {
 
     const cardNumberHandleChange = useCallback((event) => {
         setCardNumber(event.target.value);
+
+        const value = event.target.value.trim();
+        if (value.length === 19) return;
+
+        const numFilter = value.replace(/[^\d\s]/g, "");
+        const regEx = /\d{1,4}/g;
+
+        setCardNumber(numFilter && numFilter.substring(0, 19).match(regEx).join(" "));
     }, []);
 
     const expiryDateHandleChange = useCallback((event) => {
         setExpiryDate(event.target.value);
+        
+        const value = event.target.value.trim();
+        if (value.length === 4) return;
+
+        const numFilter = value.replace(/[^\d\s]/g, "");
+        const regEx = /\d{1,2}/g;
+
+        setExpiryDate(numFilter && numFilter.substring(0, 4).match(regEx).join("/"));
     }, []);
 
     const cvcHandleChange = useCallback((event) => {
@@ -79,39 +92,13 @@ function PopupProfile() {
                             <div className="popup__content__row">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">Номер карты</div>
-                                    {/* <Input className="input__field input__field--card" type="text" value={cardNumber} onChange={cardNumberHandleChange} placeholder="5545 2300 3432 4521" name="cardNumber"/> */}
-                                    {/* <InputMask mask="9999 9999 9999 9999" /> */}
-                                    <InputMask
-                                        mask="9999 9999 9999 9999"
-                                        maskChar="*"
-                                        type="text"
-                                        value={cardNumber}
-                                        onChange={cardNumberHandleChange}
-                                        placeholder="5545 2300 3432 4521"
-                                        name="cardNumber"
-                                        className="input__field"
-                                        required
-                                        >
-                                        {(inputProps) => <Input {...inputProps} />}
-                                    </InputMask>
+                                    <Input className="input__field input__field--card" type="text" value={cardNumber} onChange={cardNumberHandleChange} placeholder="5545 2300 3432 4521" name="cardNumber"/>
                                 </div>
                             </div>
                             <div className="popup__content__row popup__content__row--2x">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">MM/YY</div>
-                                    <InputMask
-                                        mask="99/99"
-                                        maskChar="*"
-                                        type="text"
-                                        value={expiryDate}
-                                        onChange={expiryDateHandleChange}
-                                        placeholder="05/08"
-                                        name="expiryDate"
-                                        className="input__field"
-                                        required
-                                        >
-                                        {(inputProps) => <Input {...inputProps} />}
-                                    </InputMask>
+                                    <Input className="input__field" type="text" value={expiryDate} onChange={expiryDateHandleChange} placeholder="05/08" name="expiryDate" required />
                                 </div>
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">CVC</div>
