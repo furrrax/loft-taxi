@@ -637,6 +637,6 @@ input[type="number"] {
   margin-right: 0;
 }
 
-.MuiButtonBase-root.hidden {
-  display: none;
+.header__nav__item .active button {
+  color: #FDBF5A;
 }
