@@ -5,7 +5,7 @@ import MapInner from "../../components/MapInner";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../redux/actions/user";
 
-import { Link, useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 function MapLayout (component) {
 

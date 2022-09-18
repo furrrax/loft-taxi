@@ -1,4 +1,8 @@
 import {React, useEffect} from "react";
+import '../css/InnerLayout.css'
+import '../css/Header.css'
+import '../css/Map.css'
+
 import PopupOrderProfile from '../components/popup/PopupOrderProfile';
 import PropTypes from "prop-types";
 

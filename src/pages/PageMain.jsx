@@ -1,5 +1,6 @@
 import React from "react";
 import logo from '../img/loft-taxi-logo.svg';
+import '../css/PageMain.css'
 
 import { Navigate, Outlet } from "react-router-dom";
 

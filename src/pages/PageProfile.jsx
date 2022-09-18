@@ -1,9 +1,14 @@
 import { React, useCallback } from "react";
 import logo from '../img/loft-taxi-logo-inner.svg';
+import '../css/InnerLayout.css'
+import '../css/Header.css'
+import '../css/Map.css'
+import '../css/Profile.css'
+
 import MapInner from "../components/MapInner";
 import PropTypes from "prop-types";
 
-import { Link, Navigate, Outlet, NavLink } from "react-router-dom";
+import { Navigate, Outlet, NavLink } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../redux/actions/user";
