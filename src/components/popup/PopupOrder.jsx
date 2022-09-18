@@ -52,12 +52,12 @@ function PopupOrder() {
         dispatch(updateCoords(address1, address2));
     }, [dispatch, address1, address2]);
 
-    const handleClickTab = useCallback((event) => {
+    /* const handleClickTab = useCallback((event) => {
         console.log('value ' + event.target.value)
         console.log('data-index ' + event.target.getAttribute('data-index'))
 
         event.target.classList.add("active");
-    }, []);
+    }, []); */
 
     const AddressList1 = () => (
         <Select 
@@ -90,6 +90,11 @@ function PopupOrder() {
             ))}
         </Select>
     );
+
+    const options = ['Стандарт', 'Премиум', 'Бизнесс'];
+    const cost = ['150', '250', '300'];
+    const cars = [picCar1, picCar2, picCar3];
+    const [active, setActive] = useState('');
     
     return(
         <form className="popup popup__order popup--map" onSubmit={submitHandleOrderForm}>
@@ -103,36 +108,21 @@ function PopupOrder() {
             </div>
             <div className="popup__option">
                 <ul className="popup__option__list">
-                    <li className="popup__option__list__item" data-index="1" value="1" onClick={handleClickTab}>
-                        <span className="popup__option__list__item__title">Стандарт</span>
-                        <span className="popup__option__list__item__cost">
-                            <span className="popup__option__list__item__cost__title">Стоимость</span>
-                            <span className="popup__option__list__item__cost__price">150 ₽</span>
-                        </span>
-                        <div className="popup__option__list__item__img">
-                            <img src={picCar1} className="popup__option__list__item__pic" alt="" />
-                        </div>
-                    </li>
-                    <li className="popup__option__list__item" data-index="2" value="2" onClick={handleClickTab}>
-                        <span className="popup__option__list__item__title">Премиум</span>
-                        <span className="popup__option__list__item__cost">
-                            <span className="popup__option__list__item__cost__title">Стоимость</span>
-                            <span className="popup__option__list__item__cost__price">250 ₽</span>
-                        </span>
-                        <div className="popup__option__list__item__img">
-                            <img src={picCar2} className="popup__option__list__item__pic" alt="" />
-                        </div>
-                    </li>
-                    <li className="popup__option__list__item" data-index="3" value="3" onClick={handleClickTab}>
-                        <span className="popup__option__list__item__title">Бизнесс</span>
-                        <span className="popup__option__list__item__cost">
-                            <span className="popup__option__list__item__cost__title">Стоимость</span>
-                            <span className="popup__option__list__item__cost__price">300 ₽</span>
-                        </span>
-                        <div className="popup__option__list__item__img">
-                            <img src={picCar3} className="popup__option__list__item__pic" alt="" />
-                        </div>
-                    </li>
+                    {options.map((option, index) => (
+                        <li 
+                            className={`popup__option__list__item ${active === option && 'active'}`}
+                            onClick={() => setActive(option)}
+                        >
+                            <span className="popup__option__list__item__title">{option}</span>
+                            <span className="popup__option__list__item__cost">
+                                <span className="popup__option__list__item__cost__title">Стоимость</span>
+                                <span className="popup__option__list__item__cost__price">{cost[index]}</span>
+                            </span>
+                            <div className="popup__option__list__item__img">
+                                <img src={cars[index]} className="popup__option__list__item__pic" alt="" />
+                            </div>
+                        </li>
+                    ))}
                 </ul>
                 <Button variant="contained" className="button-submit" type="submit">Заказать</Button>
             </div>
