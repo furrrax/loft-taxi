@@ -1,6 +1,4 @@
 import {React, useState, useEffect, useCallback} from "react";
-//import cross from "../../img/icon-cross.svg";
-//import arrow from "../../img/icon-arrow.svg";
 import picCar1 from "../../img/option-car01.png";
 import picCar2 from "../../img/option-car02.png";
 import picCar3 from "../../img/option-car03.png";
@@ -22,11 +20,6 @@ function PopupOrder() {
     const [addressList1, setAddressList1] = useState(selectAddresses);
     const [addressList2, setAddressList2] = useState(selectAddresses);
 
-    //const addressListConst = ['Пулково (LED)','Эрмитаж','Кинотеатр Аврора','Мариинский театр'];
-    //const addressListConst = selectAddresses;
-
-
-
     useEffect(() => {
         dispatch(getAddressList());
     },[]);   
@@ -44,20 +37,12 @@ function PopupOrder() {
     const address2Handle = useCallback((event) => {
         setAddressTo(event.target.value);
         setAddressList1(selectAddresses.filter(value => value !== event.target.value))
-        console.log('address2' + event.target.value)
     }, [selectAddresses]);
 
     const submitHandleOrderForm = useCallback((event) => {
         event.preventDefault();
         dispatch(updateCoords(address1, address2));
     }, [dispatch, address1, address2]);
-
-    /* const handleClickTab = useCallback((event) => {
-        console.log('value ' + event.target.value)
-        console.log('data-index ' + event.target.getAttribute('data-index'))
-
-        event.target.classList.add("active");
-    }, []); */
 
     const AddressList1 = () => (
         <Select 

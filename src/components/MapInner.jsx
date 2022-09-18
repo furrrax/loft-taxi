@@ -12,11 +12,7 @@ function InteractiveMap() {
 
     useEffect(() => {
 
-        if(getCoords.length !== 0) {
-            console.log('Страница с картой. Координаты: ' + getCoords)
-        } else {
-            console.log('Страница с картой. Координаты: еще не получены')
-        }
+        const currentURL = window.location.pathname;
         
         const map = new mapboxgl.Map({
             container: mapContainer.current,
@@ -26,39 +22,42 @@ function InteractiveMap() {
             zoom: 10,
         })
 
-        if(getCoords.length !== 0) {
-            map.on('load', () => {
-                map.flyTo({
-                    center: getCoords[0],
-                    zoom: 15
-                });
-        
-                map.addLayer({
-                    id: "route",
-                    type: "line",
-                    source: {
-                        type: "geojson",
-                        data: {
-                            type: "Feature",
-                            properties: {},
-                            geometry: {
-                                type: "LineString",
-                                coordinates: getCoords
+        if (currentURL.includes('/profile/')) {
+            return
+        } 
+            if(getCoords.length !== 0) {
+                map.on('load', () => {
+                    map.flyTo({
+                        center: getCoords[0],
+                        zoom: 15
+                    });
+            
+                    map.addLayer({
+                        id: "route",
+                        type: "line",
+                        source: {
+                            type: "geojson",
+                            data: {
+                                type: "Feature",
+                                properties: {},
+                                geometry: {
+                                    type: "LineString",
+                                    coordinates: getCoords
+                                }
                             }
+                        },
+                        layout: {
+                            "line-join": "round",
+                            "line-cap": "round"
+                        },
+                        paint: {
+                            "line-color": "#ffc617",
+                            "line-width": 8
                         }
-                    },
-                    layout: {
-                        "line-join": "round",
-                        "line-cap": "round"
-                    },
-                    paint: {
-                        "line-color": "#ffc617",
-                        "line-width": 8
-                    }
+                    });
                 });
-            });
-        }
-
+            }
+        
         return () => map.remove();
     },[getCoords]);
 
