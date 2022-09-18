@@ -16,33 +16,49 @@ import { selectAddressList } from "../../redux/selectors/map";
 function PopupOrder() {
 
     const dispatch = useDispatch();
+    const selectAddresses = useSelector(selectAddressList);
     const [address1, setAddressFrom] = useState('');
     const [address2, setAddressTo] = useState('');
+    const [addressList1, setAddressList1] = useState(selectAddresses);
+    const [addressList2, setAddressList2] = useState(selectAddresses);
 
-    const addressList1 = ['Пулково (LED)','Эрмитаж','Кинотеатр Аврора','Мариинский театр'];
-    const addressList2 = ['Пулково (LED)','Эрмитаж','Кинотеатр Аврора','Мариинский театр'];
+    //const addressListConst = ['Пулково (LED)','Эрмитаж','Кинотеатр Аврора','Мариинский театр'];
+    //const addressListConst = selectAddresses;
 
-    let getAddresses = useSelector(selectAddressList);
+
 
     useEffect(() => {
         dispatch(getAddressList());
-    },[dispatch]);
+    },[]);   
+
+    useEffect(() => {
+        setAddressList1(selectAddresses)
+        setAddressList2(selectAddresses)
+    },[selectAddresses])
 
     const address1Handle = useCallback((event) => {
         setAddressFrom(event.target.value);
-        console.log(event.target["data-index"])
-    }, []);
-
+        setAddressList2(selectAddresses.filter(value => value !== event.target.value))
+    }, [selectAddresses]);
 
     const address2Handle = useCallback((event) => {
         setAddressTo(event.target.value);
-    }, []);
+        setAddressList1(selectAddresses.filter(value => value !== event.target.value))
+        console.log('address2' + event.target.value)
+    }, [selectAddresses]);
 
     const submitHandleOrderForm = useCallback((event) => {
         event.preventDefault();
         dispatch(updateCoords(address1, address2));
     }, [dispatch, address1, address2]);
-    
+
+    const handleClickTab = useCallback((event) => {
+        console.log('value ' + event.target.value)
+        console.log('data-index ' + event.target.getAttribute('data-index'))
+
+        event.target.classList.add("active");
+    }, []);
+
     const AddressList1 = () => (
         <Select 
             variant="standard"
@@ -50,11 +66,11 @@ function PopupOrder() {
             onChange={address1Handle}
             displayEmpty
             inputProps={{ 'aria-label': 'Without label' }}
-            className="popup__address__input__field"
+            className="popup__address__input__field popup__address__input__field--1"
         >
             <MenuItem value="" disabled selected>Откуда</MenuItem>
             {addressList1.map((address, index) => (
-                <MenuItem key={index} data-index={index} value={address}>{address}</MenuItem>
+                <MenuItem /* onClick={handleClickMenuItem} */ className="menu__item__1" key={index} data-index={index} value={address}>{address}</MenuItem>
             ))}
         </Select>
     );
@@ -66,11 +82,11 @@ function PopupOrder() {
             onChange={address2Handle}
             displayEmpty
             inputProps={{ 'aria-label': 'Without label' }}
-            className="popup__address__input__field"
+            className="popup__address__input__field popup__address__input__field--2"
         >
             <MenuItem value="" disabled selected>Куда</MenuItem>
             {addressList2.map((address, index) => (
-                <MenuItem key={index} value={address}>{address}</MenuItem>
+                <MenuItem /* onClick={handleClickMenuItem} */ className="menu__item__2" key={index} data-index={index} value={address}>{address}</MenuItem>
             ))}
         </Select>
     );
@@ -87,7 +103,7 @@ function PopupOrder() {
             </div>
             <div className="popup__option">
                 <ul className="popup__option__list">
-                    <li className="popup__option__list__item">
+                    <li className="popup__option__list__item" data-index="1" value="1" onClick={handleClickTab}>
                         <span className="popup__option__list__item__title">Стандарт</span>
                         <span className="popup__option__list__item__cost">
                             <span className="popup__option__list__item__cost__title">Стоимость</span>
@@ -97,7 +113,7 @@ function PopupOrder() {
                             <img src={picCar1} className="popup__option__list__item__pic" alt="" />
                         </div>
                     </li>
-                    <li className="popup__option__list__item">
+                    <li className="popup__option__list__item" data-index="2" value="2" onClick={handleClickTab}>
                         <span className="popup__option__list__item__title">Премиум</span>
                         <span className="popup__option__list__item__cost">
                             <span className="popup__option__list__item__cost__title">Стоимость</span>
@@ -107,7 +123,7 @@ function PopupOrder() {
                             <img src={picCar2} className="popup__option__list__item__pic" alt="" />
                         </div>
                     </li>
-                    <li className="popup__option__list__item">
+                    <li className="popup__option__list__item" data-index="3" value="3" onClick={handleClickTab}>
                         <span className="popup__option__list__item__title">Бизнесс</span>
                         <span className="popup__option__list__item__cost">
                             <span className="popup__option__list__item__cost__title">Стоимость</span>
