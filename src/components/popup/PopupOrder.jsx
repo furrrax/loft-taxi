@@ -7,13 +7,16 @@ import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAddressList, updateCoords } from "../../redux/actions/map";
-import { selectAddressList } from "../../redux/selectors/map";
+import { selectAddressList, selectCoord } from "../../redux/selectors/map";
 
 function PopupOrder() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    let getCoords = useSelector(selectCoord);
     const selectAddresses = useSelector(selectAddressList);
     const [address1, setAddressFrom] = useState('');
     const [address2, setAddressTo] = useState('');
@@ -42,7 +45,10 @@ function PopupOrder() {
     const submitHandleOrderForm = useCallback((event) => {
         event.preventDefault();
         dispatch(updateCoords(address1, address2));
-    }, [dispatch, address1, address2]);
+
+        navigate('/map/order-success');
+
+    }, [dispatch, address1, address2, navigate]);
 
     const AddressList1 = () => (
         <Select 
