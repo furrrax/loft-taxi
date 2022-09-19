@@ -10,18 +10,21 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAddressList, updateCoords } from "../../redux/actions/map";
-import { selectAddressList, selectCoord } from "../../redux/selectors/map";
+import { selectAddressList } from "../../redux/selectors/map";
 
 function PopupOrder() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    let getCoords = useSelector(selectCoord);
     const selectAddresses = useSelector(selectAddressList);
     const [address1, setAddressFrom] = useState('');
     const [address2, setAddressTo] = useState('');
     const [addressList1, setAddressList1] = useState(selectAddresses);
     const [addressList2, setAddressList2] = useState(selectAddresses);
+    const options = ['Стандарт', 'Премиум', 'Бизнесс'];
+    const cost = ['150', '250', '300'];
+    const cars = [picCar1, picCar2, picCar3];
+    const [active, setActive] = useState('');
 
     useEffect(() => {
         dispatch(getAddressList());
@@ -81,11 +84,6 @@ function PopupOrder() {
             ))}
         </Select>
     );
-
-    const options = ['Стандарт', 'Премиум', 'Бизнесс'];
-    const cost = ['150', '250', '300'];
-    const cars = [picCar1, picCar2, picCar3];
-    const [active, setActive] = useState('');
     
     return(
         <form className="popup popup__order popup--map" onSubmit={submitHandleOrderForm}>
