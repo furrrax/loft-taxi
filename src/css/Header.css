@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 21px;
+  padding-right: 21px;
+  height: 12%;
+  min-height: 105px;
+  background-color: #1c1a19;
+}
+
+.header__nav__list {
+  display: flex;
+}
+
+.header__nav__item {
+  margin-right: 20px;
+}
+
+.header__nav__item:last-child {
+  margin-right: 0;
+}
+
+.header__nav__item__link {
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  background-color: unset;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  color: #ffffff;
+}
+
+.header__nav__item .active button {
+  color: #FDBF5A;
+}

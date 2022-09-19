@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/actions/user";
 import { getIsLoggedIn } from "../redux/selectors/auth";
 
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 function FormReg() {
 
     const dispatch = useDispatch();
@@ -39,32 +42,32 @@ function FormReg() {
     }, [dispatch, email, name, surname, password]);
 
     if(loggedIn) {
-        return ( <Navigate to="/map" /> )
+        return ( <Navigate to="map" /> )
     } return (
             <div className="enter-form">
                 <div className="enter-form__container">
                     <h3 className="enter-form__title">Регистрация</h3>
                     <form className="enter-form__content" onSubmit={submitHandleReg}>
                         <div className="enter-form__content__inputs">
-                            <label htmlFor="email" className="input__wrap">
-                                <div className="input__title">Email</div>
-                                <input value={email} onChange={emailHandleChange} type="email" name="email" className="input__field" placeholder="mail@mail.ru" required></input>
-                            </label>
-                            <label htmlFor="name" className="input__wrap">
-                                <div className="input__title">Как вас зовут?</div>
-                                <input value={name} onChange={nameHandleChange} type="text" name="name" className="input__field" placeholder="Кирилл" required></input>
-                            </label>
-                            <label htmlFor="surname" className="input__wrap">
-                                <div className="input__title">Ваша фамилия</div>
-                                <input value={surname} onChange={surnameHandleChange} type="text" name="surname" className="input__field" placeholder="Иванов" required></input>
-                            </label>
-                            <label htmlFor="password" className="input__wrap">
-                                <div className="input__title">Придумайте пароль*</div>
-                                <input value={password} onChange={passwordHandleChange} type="password" name="password" className="input__field" placeholder="*************" required></input>
-                            </label>
+                            <div htmlFor="email" className="input__wrap">
+                                {/* <div className="input__title">Email</div> */}
+                                <TextField variant="standard" label="Email" value={email} onChange={emailHandleChange} type="email" name="email" className="input__field" placeholder="mail@mail.ru" required></TextField>
+                            </div>
+                            <div htmlFor="name" className="input__wrap">
+                                {/* <div className="input__title">Как вас зовут?</div> */}
+                                <TextField variant="standard" label="Как вас зовут?" value={name} onChange={nameHandleChange} type="text" name="name" className="input__field" placeholder="Кирилл" required></TextField>
+                            </div>
+                            <div htmlFor="surname" className="input__wrap">
+                                {/* <div className="input__title">Ваша фамилия</div> */}
+                                <TextField variant="standard" label="Ваша фамилия" value={surname} onChange={surnameHandleChange} type="text" name="surname" className="input__field" placeholder="Иванов" required></TextField>
+                            </div>
+                            <div htmlFor="password" className="input__wrap">
+                                {/* <div className="input__title">Придумайте пароль*</div> */}
+                                <TextField variant="standard" label="Придумайте пароль*" value={password} onChange={passwordHandleChange} type="password" name="password" className="input__field" placeholder="*************" required></TextField>
+                            </div>
                         </div>
                         <button className="enter-form__content__link">Забыли пароль?</button>
-                        <button className="button-submit" type="submit">Зарегистрироваться</button>
+                        <Button variant="contained" className="button-submit" type="submit">Зарегистрироваться</Button>
                         <div className="enter-form__content__text">
                             Уже зарегистрированы?
                             &nbsp;

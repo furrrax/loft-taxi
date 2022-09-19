@@ -9,11 +9,12 @@ export const userReducer = createReducer(initialState,
     {
         [logIn.type]: (state) => {
             state.isLoggedIn = true
+            localStorage.setItem('lt-authorized', true)
         },
     
         [logOut.type]: (state) => {
             state.isLoggedIn = false
-            localStorage.setItem('authorized', false)
+            localStorage.setItem('lt-authorized', false)
         }
     }
 )

@@ -1,20 +1,28 @@
 import React from "react";
 import logo from '../img/loft-taxi-logo.svg';
-import FormLogin from "../components/FormLogin";
-import FormReg from "../components/FormReg";
+import '../css/PageMain.css'
 
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logIn, logOut } from "../redux/actions/user";
 import { getIsLoggedIn } from "../redux/selectors/auth";
 import { useEffect } from "react";
 
+import { checkCardState } from "../redux/selectors/card";
+import { getCard } from "../redux/actions/card";
+
+
 function PageMain() {
 
     const dispatch = useDispatch();
     const loggedIn = useSelector(getIsLoggedIn);
-    let localstorageStatus = localStorage.getItem('authorized');
+    const cardState = useSelector(checkCardState);
+    let localstorageStatus = localStorage.getItem('lt-authorized');
+
+    useEffect(() => {
+        dispatch(getCard());
+    },[dispatch]);
 
     useEffect(() => {
         if(localstorageStatus === 'true') {
@@ -24,8 +32,13 @@ function PageMain() {
         }
     },[dispatch, localstorageStatus]);
 
+
     if(loggedIn) {
-        return ( <Navigate to="/map" /> )
+        if(!cardState) {
+            return ( <Navigate to="/map/order-to-profile" /> )
+        } else {
+            return ( <Navigate to="/map" /> )
+        }
     } return (
             <section className="main" data-testid="page-main">
                 <div className="container">
@@ -35,11 +48,7 @@ function PageMain() {
                         </div>
                     </div>
                     <div className="main__content">
-                        <Routes>
-                            <Route path="/login" element={<FormLogin />} exact></Route>
-                            <Route path="/reg" element={<FormReg />}></Route>
-                            <Route path="*" element={<FormLogin />}></Route>
-                        </Routes>
+                        <Outlet />
                     </div>
                 </div>
             </section>

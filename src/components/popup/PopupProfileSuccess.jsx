@@ -1,5 +1,9 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
+import Button from '@mui/material/Button';
+
 function PopupProfileSuccess() {
 
     return(
@@ -9,7 +13,9 @@ function PopupProfileSuccess() {
                 <span className="popup__subtitle">
                     Платёжные данные обновлены. Теперь вы можете заказывать такси.
                 </span>
-                <button className="button-submit" type="submit">Перейти на карту</button>
+                <Link to="/map">
+                    <Button variant="contained" className="button-submit" type="submit">Перейти на карту</Button>
+                </Link>
             </div>
         </div>
     )
