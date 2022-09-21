@@ -112,3 +112,10 @@ input[type="number"] {
   line-height: 21px;
   color: #828282;
 }
+
+.error__field {
+  position: absolute;
+  top: 100%;
+  color: red;
+  font-size: 12px;
+}

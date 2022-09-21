@@ -1,4 +1,4 @@
-import {React, useState, useCallback, useEffect, useRef} from "react";
+import {React, useCallback, useEffect} from "react";
 import logo from "../../img/loft-taxi-logo-clear.svg";
 import cardPic1 from "../../img/card-pic1.svg";
 import cardPic2 from "../../img/card-pic2.svg";
@@ -12,8 +12,10 @@ import { checkCardState } from "../../redux/selectors/card";
 
 import { selectCardNumber, selectCardDate } from "../../redux/selectors/card";
 
-import Input from '@mui/material/Input';
+import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+
+import {useForm} from 'react-hook-form';
 
 function PopupProfile() {
 
@@ -22,56 +24,46 @@ function PopupProfile() {
     let getCardNumber = useSelector(selectCardNumber).cardNumber;
     let getCardDate = useSelector(selectCardDate).cardDate;
 
-    const [cardName, setCardName] = useState('');
-    const [cardNumber, setCardNumber] = useState('');
-    const [expiryDate, setExpiryDate] = useState('');
-    const [cvc, setCvc] = useState('');
-
     const cardState = useSelector(checkCardState);
 
     useEffect(() => {
         dispatch(getCard());
     },[dispatch]);
 
-    const cardNameHandleChange = useCallback((event) => {
-        setCardName(event.target.value);
-    }, []);
+    const {
+        register,
+        formState: {
+            errors,
+        },
+        handleSubmit,
+        reset,
+    } = useForm({
+        mode: "onChange"
+    });
 
-    const cardNumberHandleChange = useCallback((event) => {
-        setCardNumber(event.target.value);
-
-        const value = event.target.value.trim();
-        if (value.length === 19) return;
-
-        const numFilter = value.replace(/[^\d\s]/g, "");
+    const cardFilter = (value) => {
+        const valueData = value.trim();
+        const numFilter = valueData.replace(/[^\d\s]/g, "");
         const regEx = /\d{1,4}/g;
 
-        setCardNumber(numFilter && numFilter.substring(0, 19).match(regEx).join(" "));
-    }, []);
+        return numFilter && numFilter.substring(0, 19).match(regEx).join(" ");
+    }
 
-    const expiryDateHandleChange = useCallback((event) => {
-        setExpiryDate(event.target.value);
-        
-        const value = event.target.value.trim();
-        if (value.length === 4) return;
-
-        const numFilter = value.replace(/[^\d\s]/g, "");
+    const dateFilter = (value) => {
+        const valueData = value.trim();
+        const numFilter = valueData.replace(/[^\d\s]/g, "");
         const regEx = /\d{1,2}/g;
 
-        setExpiryDate(numFilter && numFilter.substring(0, 4).match(regEx).join("/"));
-    }, []);
+        return numFilter && numFilter.substring(0, 4).match(regEx).join("/");
+    }
 
-    const cvcHandleChange = useCallback((event) => {
-        setCvc(event.target.value);
-    }, []);
-
-    const submitHandleCard = useCallback((event) => {
-        event.preventDefault();
-        dispatch(updateCard(cardNumber, expiryDate, cardName, cvc));
+    const submitHandleCard = useCallback((data) => {
+        dispatch(updateCard(data.cardNumber, data.expiryDate, data.cardName, data.cvc));
+        reset();
         if(cardState) {
             navigate('/profile/profile-success');
         }
-    }, [dispatch, navigate, cardState, cardNumber, expiryDate, cardName, cvc]);
+    }, [dispatch, reset, navigate, cardState]);
 
     return(
         <div className="popup popup__profile popup--profile">
@@ -80,29 +72,93 @@ function PopupProfile() {
                 <span className="popup__subtitle">
                     Введите платежные данные
                 </span>
-                <form onSubmit={submitHandleCard}>
+                <form onSubmit={handleSubmit(submitHandleCard)}>
                     <div className="popup__content">
                         <div className="popup__content__col">
                             <div className="popup__content__row">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">Имя владельца</div>
-                                    <Input required value={cardName} onChange={cardNameHandleChange} type="text" name="cardName" className="input__field" placeholder="Loft" ></Input>
+                                    <TextField
+                                        variant="standard"
+                                        type="text"
+                                        className="input__field"
+                                        placeholder="Иван"
+                                        {...register('cardName', {
+                                            required: "Поле обязательно к заполнению",
+                                        })}
+                                        >
+                                    </TextField>
+                                    {errors?.cardName && <div className="error__field">{errors?.cardName?.message}</div>}
                                 </div>
                             </div>
                             <div className="popup__content__row">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">Номер карты</div>
-                                    <Input className="input__field input__field--card" type="text" value={cardNumber} onChange={cardNumberHandleChange} placeholder="5545 2300 3432 4521" name="cardNumber"/>
+                                    <TextField
+                                        variant="standard"
+                                        className="input__field input__field--card"
+                                        type="tel"
+                                        imput-mode="numeric"
+                                        placeholder="5545 2300 3432 4521"
+                                        name="cardNumber"
+                                        {...register('cardNumber', {
+                                            required: "Поле обязательно к заполнению",
+                                            minLength: {
+                                                value: 19,
+                                                message: "Введите номер полностью"
+                                            }
+                                        })}
+                                        onChange={(event) => {
+                                            const {value} = event.target;
+                                            event.target.value = cardFilter(value);
+                                        }}
+                                        >
+                                    </TextField>
+                                    {errors?.cardNumber && <div className="error__field">{errors?.cardNumber?.message}</div>}
                                 </div>
                             </div>
                             <div className="popup__content__row popup__content__row--2x">
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">MM/YY</div>
-                                    <Input className="input__field" type="text" value={expiryDate} onChange={expiryDateHandleChange} placeholder="05/08" name="expiryDate" required />
+                                    <TextField
+                                        variant="standard"
+                                        className="input__field"
+                                        type="text"
+                                        placeholder="05/08"
+                                        name="expiryDate"
+                                        {...register('expiryDate', {
+                                            required: "Поле обязательно к заполнению",
+                                            minLength: {
+                                                value: 4,
+                                                message: "Введите дату полностью"
+                                            }
+                                        })}
+                                        onChange={(event) => {
+                                            const {value} = event.target;
+                                            event.target.value = dateFilter(value);
+                                        }}
+                                        >
+                                    </TextField>
+                                    {errors?.expiryDate && <div className="error__field">{errors?.expiryDate?.message}</div>}
                                 </div>
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">CVC</div>
-                                    <Input required value={cvc} onChange={cvcHandleChange} type="number" name="cvc" className="input__field" maxLength={3} placeholder="667" ></Input>
+                                    <TextField 
+                                        variant="standard"
+                                        type="number"
+                                        name="cvc"
+                                        className="input__field"
+                                        placeholder="667"
+                                        {...register('cvc', {
+                                            required: "Поле обязательно к заполнению",
+                                            minLength: {
+                                                value: 3,
+                                                message: "Введите номер полностью"
+                                            }
+                                        })}
+                                        >
+                                    </TextField>
+                                    {errors?.cvc && <div className="error__field">{errors?.cvc?.message}</div>}
                                 </div>
                             </div>
                         </div>

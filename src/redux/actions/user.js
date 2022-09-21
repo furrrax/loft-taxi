@@ -6,7 +6,7 @@ export const authenticate = createAction('@user/authenticate', (email, password)
     }
 });
 
-export const register = createAction('@user/register', (email, name, surname, password) => {
+export const registrate = createAction('@user/registrate', (email, name, surname, password) => {
     return {
         payload: { email, name, surname, password },
     }
