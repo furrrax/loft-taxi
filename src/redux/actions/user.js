@@ -14,3 +14,11 @@ export const registrate = createAction('@user/registrate', (email, name, surname
 
 export const logIn = createAction('@user/logIn');
 export const logOut = createAction('@user/logOut');
+
+export const setErrorAuth = createAction("@user/setErrorAuth", (error) => {
+    return { payload: {error} }
+});
+
+export const setErrorReg = createAction("@user/setErrorReg", (error) => {
+    return { payload: {error} }
+});

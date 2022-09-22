@@ -10,7 +10,7 @@ export const serverLogIn = async (email, password) => {
                 "password": password
             }),
         }
-        ).then(responce => responce.json()).then(data => data.success);
+        ).then(res => res.json());
 };
 
 export const serverReg = async (email, name, surname, password) => {
@@ -27,7 +27,7 @@ export const serverReg = async (email, name, surname, password) => {
                 "password": password
             }),
         }
-        ).then(responce => responce.json()).then(data => data.success);
+        ).then(res => res.json());
 };
 
 export const serverCardUpdate = async (cardNumber, expiryDate, cardName, cvc) => {

@@ -119,3 +119,8 @@ input[type="number"] {
   color: red;
   font-size: 12px;
 }
+
+.error__field--server {
+  max-width: 205px;
+  top: 127%;
+}

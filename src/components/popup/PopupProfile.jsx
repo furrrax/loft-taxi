@@ -1,4 +1,5 @@
 import {React, useCallback, useEffect} from "react";
+import PropTypes from "prop-types";
 import logo from "../../img/loft-taxi-logo-clear.svg";
 import cardPic1 from "../../img/card-pic1.svg";
 import cardPic2 from "../../img/card-pic2.svg";
@@ -197,6 +198,13 @@ function PopupProfile() {
             </div>
         </div>
     )
+}
+
+PopupProfile.propTypes = {
+    cardName: PropTypes.string,
+    cardNumber: PropTypes.number,
+    expiryDate: PropTypes.number,
+    cvc: PropTypes.number
 }
 
 export default PopupProfile;

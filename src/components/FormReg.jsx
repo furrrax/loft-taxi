@@ -5,7 +5,7 @@ import { Link, Navigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { registrate } from "../redux/actions/user";
-import { getIsLoggedIn } from "../redux/selectors/auth";
+import { getIsLoggedIn, getErrorReg } from "../redux/selectors/auth";
 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -16,6 +16,7 @@ function FormReg() {
 
     const dispatch = useDispatch();
     const loggedIn = useSelector(getIsLoggedIn);
+    const getError = useSelector(getErrorReg);
     
     const {
         register,
@@ -101,6 +102,7 @@ function FormReg() {
                                     >
                                 </TextField>
                                 {errors?.password && <div className="error__field">{errors?.password?.message}</div>}
+                                <div className="error__field error__field--server">{getError}</div>
                             </div>
                         </div>
                         <button className="enter-form__content__link">Забыли пароль?</button>
