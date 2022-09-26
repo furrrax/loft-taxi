@@ -37,13 +37,14 @@ function FormLogin() {
     if(loggedIn) {
         return ( <Navigate to="map" /> )
     } return (
-            <div className="enter-form">
+            <div className="enter-form" data-testid='form-login'>
                 <div className="enter-form__container">
                     <h3 className="enter-form__title">Войти</h3>
                     <form className="enter-form__content" onSubmit={handleSubmit(submitHandleLogin)}>
                         <div className="enter-form__content__inputs">
                             <div htmlFor="email" className="input__wrap">
                                 <TextField
+                                    data-testid='login-email'
                                     variant="standard"
                                     label="Email"
                                     type="email"
@@ -62,6 +63,7 @@ function FormLogin() {
                             </div>
                             <div htmlFor="password" className="input__wrap">
                                 <TextField
+                                    data-testid='login-password'
                                     variant="standard"
                                     label="Введите пароль*"
                                     className="input__field"
@@ -81,12 +83,12 @@ function FormLogin() {
                             </div>
                         </div>
                         <button className="enter-form__content__link">Забыли пароль?</button>
-                        <Button variant="contained" className="button-submit" id="button-submit" data-testid="submit" type="submit">Войти</Button>
+                        <Button data-testid='login-submit' variant="contained" className="button-submit" id="button-submit" type="submit">Войти</Button>
                         <div className="enter-form__content__text">
                             Новый пользователь?
                             &nbsp;
                             <Link to="/reg">
-                                <button className="enter-form__content__text__link">Регистрация</button>
+                                <button data-testid='link-to-reg' className="enter-form__content__text__link">Регистрация</button>
                             </Link>
                         </div>
                     </form>

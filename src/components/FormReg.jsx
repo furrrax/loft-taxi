@@ -37,7 +37,7 @@ function FormReg() {
     if(loggedIn) {
         return ( <Navigate to="map" /> )
     } return (
-            <div className="enter-form">
+            <div className="enter-form" data-testid='form-reg'>
                 <div className="enter-form__container">
                     <h3 className="enter-form__title">Регистрация</h3>
                     <form className="enter-form__content" onSubmit={handleSubmit(submitHandleReg)}>

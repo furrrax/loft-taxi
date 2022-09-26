@@ -18,7 +18,7 @@ function MapLayout (component) {
     },[dispatch, navigate]);
 
     return (
-        <section className="inner__map">
+        <section className="inner__map" data-testid="page-map">
             <div className="container">
                 <header className="header">
                     <div className="header__logo">
