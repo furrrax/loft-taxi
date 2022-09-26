@@ -7,7 +7,9 @@ import FormLogin from "./FormLogin";
 describe("FormLogin", () => {
 
     const initialState = {
-        isLoggedIn: false,
+        user: {
+            isLoggedIn: false,
+        }
     }
 
     const navigate = jest.fn()
@@ -32,7 +34,7 @@ describe("FormLogin", () => {
 
     it('logged in', () => {
         
-        initialState.isLoggedIn = true
+        initialState.user.isLoggedIn = true
 
         customRender(<FormLogin />, initialState);
 
