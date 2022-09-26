@@ -36,7 +36,7 @@ describe("FormLogin", () => {
 
         customRender(<FormLogin />, initialState);
 
-        expect(navigate).toHaveBeenCalledWith("/map");
+        expect(navigate).toHaveBeenCalledWith("/map", {"replace" : false, "state": undefined});
     })
 
 })

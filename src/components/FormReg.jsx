@@ -111,7 +111,7 @@ function FormReg() {
                             Уже зарегистрированы?
                             &nbsp;
                             <Link to="/login">
-                                <button className="enter-form__content__text__link">Войти</button>
+                                <button data-testid='link-to-login' className="enter-form__content__text__link">Войти</button>
                             </Link>
                         </div>
                     </form> 
