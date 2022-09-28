@@ -6,11 +6,6 @@ import FormLogin from "./FormLogin";
 
 describe("FormLogin", () => {
 
-    const initialState = {
-        user: {
-            isLoggedIn: false,
-        }
-    }
 
     const navigate = jest.fn()
 
@@ -32,11 +27,23 @@ describe("FormLogin", () => {
         expect(navigate).toHaveBeenCalledWith("/reg", {"replace" : false, "state": undefined});
     })
 
-    it('logged in', () => {
+    /* it('logged in', () => {
         
         initialState.user.isLoggedIn = true
 
         customRender(<FormLogin />, initialState);
+
+        expect(navigate).toHaveBeenCalledWith("/map");
+    }) */
+    
+
+    it('logged in', () => {
+        
+        customRender(<FormLogin />, {});
+
+        userEvent.type(screen.getByTestId("login-email"),  "cjuiceone@gmail.com");
+        userEvent.type(screen.getByTestId("login-password"),  "Kryu4ki555");
+        userEvent.click(screen.getByTestId("login-submit"));
 
         expect(navigate).toHaveBeenCalledWith("/map");
     })
