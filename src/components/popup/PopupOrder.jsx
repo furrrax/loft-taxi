@@ -54,7 +54,8 @@ function PopupOrder() {
     }, [dispatch, address1, address2, navigate]);
 
     const AddressList1 = () => (
-        <Select 
+        <Select
+            data-testid="order-select1"
             variant="standard"
             value={address1}
             onChange={address1Handle}
@@ -64,13 +65,14 @@ function PopupOrder() {
         >
             <MenuItem value="" disabled selected>Откуда</MenuItem>
             {addressList1.map((address, index) => (
-                <MenuItem className="menu__item__1" key={index} data-index={index} value={address}>{address}</MenuItem>
+                <MenuItem data-testid="order-item1" className="menu__item__1" key={index} data-index={index} value={address}>{address}</MenuItem>
             ))}
         </Select>
     );
 
     const AddressList2 = () => (
-        <Select 
+        <Select
+            data-testid="order-select2"
             variant="standard"
             value={address2}
             onChange={address2Handle}
@@ -80,13 +82,13 @@ function PopupOrder() {
         >
             <MenuItem value="" disabled selected>Куда</MenuItem>
             {addressList2.map((address, index) => (
-                <MenuItem className="menu__item__2" key={index} data-index={index} value={address}>{address}</MenuItem>
+                <MenuItem data-testid="order-item2" className="menu__item__2" key={index} data-index={index} value={address}>{address}</MenuItem>
             ))}
         </Select>
     );
     
     return(
-        <form className="popup popup__order popup--map" onSubmit={submitHandleOrderForm}>
+        <form data-testid="form-order" className="popup popup__order popup--map" onSubmit={submitHandleOrderForm}>
             <div className="popup__address">
                 <div className="popup__address__input popup__address__input--start">
                     <AddressList1 />
@@ -114,7 +116,7 @@ function PopupOrder() {
                         </li>
                     ))}
                 </ul>
-                <Button variant="contained" className="button-submit" type="submit">Заказать</Button>
+                <Button data-testid="order-submit" variant="contained" className="button-submit" type="submit">Заказать</Button>
             </div>
         </form>
     ) 

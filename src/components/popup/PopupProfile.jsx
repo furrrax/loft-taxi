@@ -67,7 +67,7 @@ function PopupProfile() {
     }, [dispatch, reset, navigate, cardState]);
 
     return(
-        <div className="popup popup__profile popup--profile">
+        <div className="popup popup__profile popup--profile" data-testid='form-profile'>
             <div className="popup__wraper">
                 <h3 className="popup__title">Профиль</h3>
                 <span className="popup__subtitle">
@@ -80,6 +80,7 @@ function PopupProfile() {
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">Имя владельца</div>
                                     <TextField
+                                        data-testid='form-profile-name'
                                         variant="standard"
                                         type="text"
                                         className="input__field"
@@ -96,6 +97,7 @@ function PopupProfile() {
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">Номер карты</div>
                                     <TextField
+                                        data-testid='form-profile-card'
                                         variant="standard"
                                         className="input__field input__field--card"
                                         type="tel"
@@ -122,6 +124,7 @@ function PopupProfile() {
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">MM/YY</div>
                                     <TextField
+                                        data-testid='form-profile-expiry'
                                         variant="standard"
                                         className="input__field"
                                         type="text"
@@ -144,7 +147,8 @@ function PopupProfile() {
                                 </div>
                                 <div className="popup__content__row__input input__wrap">
                                     <div className="input__title">CVC</div>
-                                    <TextField 
+                                    <TextField
+                                        data-testid='form-profile-cvc'
                                         variant="standard"
                                         type="number"
                                         name="cvc"
@@ -193,7 +197,7 @@ function PopupProfile() {
                             </div>
                         </div>
                     </div>
-                    <Button variant="contained" className="button-submit" type="submit">Сохранить</Button>
+                    <Button data-testid='form-profile-submit' variant="contained" className="button-submit" type="submit">Сохранить</Button>
                 </form>
             </div>
         </div>
