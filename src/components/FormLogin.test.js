@@ -2,6 +2,7 @@ import * as router from "react-router"
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event"
 import { customRender } from "../utils/customRenderer";
+import { store } from "../redux/store";
 import FormLogin from "./FormLogin";
 
 describe("FormLogin", () => {
@@ -26,26 +27,32 @@ describe("FormLogin", () => {
 
         expect(navigate).toHaveBeenCalledWith("/reg", {"replace" : false, "state": undefined});
     })
-
-    /* it('logged in', () => {
-        
-        initialState.user.isLoggedIn = true
-
-        customRender(<FormLogin />, initialState);
-
-        expect(navigate).toHaveBeenCalledWith("/map");
-    }) */
     
 
-    it('logged in', () => {
+    it('inputs data is valid', () => {
         
         customRender(<FormLogin />, {});
 
-        userEvent.type(screen.getByTestId("login-email"),  "cjuiceone@gmail.com");
-        userEvent.type(screen.getByTestId("login-password"),  "Kryu4ki555");
-        userEvent.click(screen.getByTestId("login-submit"));
+        userEvent.type(screen.getByLabelText("Email"), "testmail5@mail.ru");
+        userEvent.type(screen.getByLabelText("Введите пароль*"), "222555222");
+        
+        expect(screen.getByLabelText("Email")).toHaveValue("testmail5@mail.ru");
+        expect(screen.getByLabelText("Введите пароль*")).toHaveValue("222555222");
 
-        expect(navigate).toHaveBeenCalledWith("/map");
+    })
+
+    it('logged in', () => {
+
+        customRender(<FormLogin />, {});
+
+        userEvent.type(screen.getByLabelText("Email"), "testmail5@mail.ru");
+        userEvent.type(screen.getByLabelText("Введите пароль*"), "222555222");
+
+        userEvent.click(screen.getByTestId("login-submit"))
+
+        setTimeout(() => {
+            expect(store.getState().user.isLoggedIn).toBe(true);
+        }, 5000)
     })
 
 })

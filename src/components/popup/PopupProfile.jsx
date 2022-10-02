@@ -58,6 +58,14 @@ function PopupProfile() {
         return numFilter && numFilter.substring(0, 4).match(regEx).join("/");
     }
 
+    const cvcFilter = (value) => {
+        const valueData = value.trim();
+        const numFilter = valueData.replace(/[^\d\s]/g, "");
+        const regEx = /\d{1,3}/g;
+
+        return numFilter && numFilter.substring(0, 3).match(regEx).join("/");
+    }
+
     const submitHandleCard = useCallback((data) => {
         dispatch(updateCard(data.cardNumber, data.expiryDate, data.cardName, data.cvc));
         reset();
@@ -150,7 +158,7 @@ function PopupProfile() {
                                     <TextField
                                         data-testid='form-profile-cvc'
                                         variant="standard"
-                                        type="number"
+                                        type="tel"
                                         name="cvc"
                                         className="input__field"
                                         placeholder="667"
@@ -161,6 +169,10 @@ function PopupProfile() {
                                                 message: "Введите номер полностью"
                                             }
                                         })}
+                                        onChange={(event) => {
+                                            const {value} = event.target;
+                                            event.target.value = cvcFilter(value);
+                                        }}
                                         >
                                     </TextField>
                                     {errors?.cvc && <div className="error__field">{errors?.cvc?.message}</div>}

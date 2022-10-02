@@ -2,6 +2,7 @@ import * as router from "react-router"
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event"
 import { customRender } from "../../utils/customRenderer";
+import { store } from "../../redux/store";
 import PopupProfile from "./PopupProfile";
 
 describe("PopupProfile", () => {
@@ -19,18 +20,35 @@ describe("PopupProfile", () => {
         expect(screen.getByTestId('form-profile')).toBeInTheDocument();
     })    
 
-    it('save profile data', () => {
+    it('profile data entered correctly', () => {
         
         customRender(<PopupProfile />, {});
 
-        userEvent.type(screen.getByTestId("form-profile-name"),  "Иван");
-        userEvent.type(screen.getByTestId("form-profile-card"),  "1111111111111111");
-        userEvent.type(screen.getByTestId("form-profile-expiry"),  "2525");
-        userEvent.type(screen.getByTestId("form-profile-cvc"),  "111");
+        userEvent.type(screen.getByPlaceholderText("Иван"),  "Антон");
+        userEvent.type(screen.getByPlaceholderText("5545 2300 3432 4521"),  "1111111111111111");
+        userEvent.type(screen.getByPlaceholderText("05/08"),  "2525");
+        userEvent.type(screen.getByPlaceholderText("667"),  "111");
 
-        userEvent.click(screen.getByTestId("form-profile-submit"));
+        expect(screen.getByPlaceholderText("Иван")).toHaveValue("Антон");
+        expect(screen.getByPlaceholderText("5545 2300 3432 4521")).toHaveValue("1111 1111 1111 1111");
+        expect(screen.getByPlaceholderText("05/08")).toHaveValue("25/25");
+        expect(screen.getByPlaceholderText("667")).toHaveValue("111");
+    })
 
-        expect(navigate).toHaveBeenCalledWith("/profile/profile-success");
+    it('profile data submitted', () => {
+
+        customRender(<PopupProfile />, {});
+
+        userEvent.type(screen.getByPlaceholderText("Иван"),  "Антон");
+        userEvent.type(screen.getByPlaceholderText("5545 2300 3432 4521"),  "1111111111111111");
+        userEvent.type(screen.getByPlaceholderText("05/08"),  "2525");
+        userEvent.type(screen.getByPlaceholderText("667"),  "111");
+
+        userEvent.click(screen.getByTestId("form-profile-submit"))
+
+        setTimeout(() => {
+            expect(store.getState().user.cardDataReceived).toBe(true);
+        }, 5000)
     })
 
 })
