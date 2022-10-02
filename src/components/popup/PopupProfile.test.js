@@ -47,7 +47,7 @@ describe("PopupProfile", () => {
         userEvent.click(screen.getByTestId("form-profile-submit"))
 
         setTimeout(() => {
-            expect(store.getState().user.cardDataReceived).toBe(true);
+            expect(store.getState().card.cardDataReceived).toBe(true);
         }, 5000)
     })
 
