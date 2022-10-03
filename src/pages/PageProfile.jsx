@@ -28,7 +28,7 @@ function PageProfile () {
     } return (
             <section className="inner__profile">
                 <div className="container">
-                    <header className="header">
+                    <header className="header" data-testid='header-menu'>
                         <div className="header__logo">
                             <img src={logo} className="header__logo__pic" alt="logo" />
                         </div>

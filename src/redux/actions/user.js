@@ -6,7 +6,7 @@ export const authenticate = createAction('@user/authenticate', (email, password)
     }
 });
 
-export const register = createAction('@user/register', (email, name, surname, password) => {
+export const registrate = createAction('@user/registrate', (email, name, surname, password) => {
     return {
         payload: { email, name, surname, password },
     }
@@ -14,3 +14,11 @@ export const register = createAction('@user/register', (email, name, surname, pa
 
 export const logIn = createAction('@user/logIn');
 export const logOut = createAction('@user/logOut');
+
+export const setErrorAuth = createAction("@user/setErrorAuth", (error) => {
+    return { payload: {error} }
+});
+
+export const setErrorReg = createAction("@user/setErrorReg", (error) => {
+    return { payload: {error} }
+});

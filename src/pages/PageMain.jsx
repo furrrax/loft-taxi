@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect } from "react";
 import logo from '../img/loft-taxi-logo.svg';
 import '../css/PageMain.css'
 
@@ -7,7 +7,6 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn, logOut } from "../redux/actions/user";
 import { getIsLoggedIn } from "../redux/selectors/auth";
-import { useEffect } from "react";
 
 import { checkCardState } from "../redux/selectors/card";
 import { getCard } from "../redux/actions/card";
