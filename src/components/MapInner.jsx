@@ -5,6 +5,9 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { useSelector } from "react-redux";
 import { selectCoord } from "../redux/selectors/map";
 
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
+
 function InteractiveMap() {
 
     const mapContainer = useRef(null);
