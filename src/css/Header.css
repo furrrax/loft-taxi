@@ -1,6 +1,7 @@
 .header {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding-left: 21px;
   padding-right: 21px;
@@ -38,4 +39,10 @@
 
 .header__nav__item .active button {
   color: #FDBF5A;
+}
+
+@media (max-width: 564px) {
+  .header {
+    justify-content: center;
+  }
 }
