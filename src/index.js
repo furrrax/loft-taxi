@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'normalize.css';
 import './css/Common.css';
-import './css/Media.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

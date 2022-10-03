@@ -3,6 +3,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+  z-index: 5;
 }
 
 .popup__profile-success {
@@ -139,4 +140,22 @@
 
 .card__row__number__item:last-child {
   margin-right: 0;
+}
+
+@media (max-width: 810px) {
+  .popup__content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .popup__content__col:last-child {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup__profile {
+    top: 10px;
+    transform: translateX(-50%);
+  }
 }
